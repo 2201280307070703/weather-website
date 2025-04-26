@@ -1,7 +1,11 @@
 const router = require("express").Router();
 
-const authenticationController = require("./controllers/authenticationController");
+const userController = require("./controllers/userController");
+const weatherController = require("./controllers/weatherController");
+const locationController = require("./controllers/locationController");
 
-router.use(authenticationController);
+router.use('/users', userController);
+router.use('/weather', weatherController);
+router.use('/location', locationController);
 
 module.exports = router;

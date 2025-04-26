@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const authenticationService = require("../services/authenticationService");
+const userService = require("../services/userService");
 
 router.post('/register', async (req, res) => {
     const {email, password} = req.body;
 
     try{
-        const token = await authenticationService.register(email, password);
+        const token = await userService.register(email, password);
 
         res.cookie('auth', token, { httpOnly: true });
         res.json({successfully: true});
@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
     const {email, password} = req.body;
 
     try{
-        const token = await authenticationService.login(email, password);
+        const token = await userService.login(email, password);
         res.cookie('auth', token, { httpOnly: true });
 
         res.json({successfully: true});
