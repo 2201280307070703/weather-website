@@ -1,9 +1,15 @@
-import Test from './components/Test';
+import { Routes, Route } from 'react-router-dom';
+
+import Path from './paths';
+
+import Home from './components/home/Home';
 
 function App() {
   return (
     <>
-      <Test/>
+    <Routes>
+      <Route path={Path.Home} element={<Home/>}/>
+    </Routes>
     </>
   )
 }
