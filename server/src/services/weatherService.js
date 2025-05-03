@@ -28,3 +28,45 @@ exports.getWeatherByCoords = async (lat, lon, days) => {
 
     return response.data;
 };
+
+exports.getWeatherCurrentState = async (lat, lon) => {
+    const response = await axios.get(URL, {
+        params: {
+          key: API_KEY,
+          q: `${lat},${lon}`
+        }
+      });
+
+      const weatherCondition = response.data.current.condition.text.toLowerCase();
+      if (weatherCondition.includes("sun") || weatherCondition === "clear") {
+        return "sunny";
+      } 
+      else if (
+        weatherCondition.includes("rain") ||
+        weatherCondition.includes("drizzle") ||
+        weatherCondition.includes("shower") ||
+        weatherCondition.includes("thunder")
+      ) {
+        return "rainy";
+      } 
+      else if (
+        weatherCondition.includes("snow") ||
+        weatherCondition.includes("sleet") ||
+        weatherCondition.includes("blizzard") ||
+        weatherCondition.includes("ice") ||
+        weatherCondition.includes("freezing")
+      ) {
+        return "snowy";
+      } 
+      else if (
+        weatherCondition.includes("cloud") ||
+        weatherCondition.includes("overcast") ||
+        weatherCondition.includes("fog") ||
+        weatherCondition.includes("mist")
+      ) {
+        return "cloudy";
+      } 
+      else {
+        return "default";
+      }
+    };

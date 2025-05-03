@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as weatherService from "../../services/weatherService.js";
 
-function Home() {
+export default function Home() {
   const [daysTemperature, setDaysTemperature] = useState([]);
 
   useEffect(() => {
@@ -22,5 +22,3 @@ function Home() {
     })
   );
 }
-
-export default Home;

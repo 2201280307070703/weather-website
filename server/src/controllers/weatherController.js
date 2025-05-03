@@ -1,28 +1,73 @@
 const router = require("express").Router();
 const weatherService = require('../services/weatherService');
 
-router.get('/info', async (req, res) => {
-    const { city, lat, lon, days} = req.query;
+router.get('/today', async (req, res) => {
+    const { city, lat, lon} = req.query;
 
     try{
         let response;
 
         if(city){
-            response = await weatherService.getWeatherByCity(city, days);
+            response = await weatherService.getWeatherByCity(city, 1);
         }
 
         if(lat && lon){
-            response = await weatherService.getWeatherByCoords(lat, lon, days);
+            response = await weatherService.getWeatherByCoords(lat, lon, 1);
         }
 
-        //I'm using the free api version, which is why I'm loading more data than necessary into memory
-        const forecastDays = response.forecast.forecastday;
+        const result = {
+            'location' : response.location.name,
+            'region' : response.location.region,
+            'country' : response.location.country,
+            'currentTemp' : response.current.temp_c,
+            'currentWeatherCondition' : response.current.condition.text,
+            'currentWeatherConditionIcon': response.current.condition.icon,
+            'maxTemp' : response.forecast.forecastday[0].day.maxtemp_c,
+            'minTemp' : response.forecast.forecastday[0].day.mintemp_c,
+            'avgTemp' : response.forecast.forecastday[0].day.avgtemp_c,
+            'chanceOfRain' : response.forecast.forecastday[0].day.daily_chance_of_rain,
+            'chanceOfSnow' : response.forecast.forecastday[0].day.daily_will_it_snow,
+        };
 
-        const result = forecastDays.map(day => {
-            return { id: day.date_epoch, date: day.date, avgTemp: day.day.avgtemp_c };
-        });
+        res.send(result);
+
+    }catch(error){
+        res.status(400).json({msg: error.message});
+    }
+});
+
+router.get('/current-weather-state', async (req, res) => {
+    const {lat, lon} = req.query;
+
+    try{
+        const response = await weatherService.getWeatherCurrentState(lat, lon);
+        res.json(response); 
+
+    }catch(error){
+        res.status(400).json({msg: error.message});
+    }
+});
+
+router.get('/hourly', async (req, res) => {
+    const {lat, lon} = req.query;
+
+    try{
+        const response = await weatherService.getWeatherByCoords(lat, lon);
         
-        res.json(result); 
+        const result = response.forecast.forecastday[0].hour.map(hour => {
+            const date = new Date(hour.time);
+            return {
+              time: new Intl.DateTimeFormat('en-US', { hour: '2-digit', minute: '2-digit' }).format(date),
+              temp: hour.temp_c,
+              feelsLike: hour.feelslike_c,
+              state: hour.condition.text,
+              wind: hour.wind_mph,
+              rainChance: hour.chance_of_rain,
+              uvIndex: hour.uv
+            };
+          });
+
+        res.json(result);
 
     }catch(error){
         res.status(400).json({msg: error.message});

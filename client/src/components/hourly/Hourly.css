@@ -1,0 +1,49 @@
+.hourly-forecast-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+    height: 30vw;
+    overflow: auto;
+  }
+  
+  .hour-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hour-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hour-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+  }
+  
+  .hour-card p {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #555;
+  }
+  
+  .hour-card strong {
+    color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .hourly-forecast-cards {
+      padding: 1rem;
+      height: 65vh;
+    }
+  
+    .hour-card {
+      padding: 1rem;
+    }
+  }
+  

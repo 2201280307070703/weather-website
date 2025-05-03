@@ -1,0 +1,122 @@
+.container {
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .mainInfo {
+    width: 90%;
+    max-width: 600px;
+    background-image: url("https://media.istockphoto.com/id/513373486/photo/beautiful-sky-with-white-cloud-background.jpg?s=612x612&w=0&k=20&c=7JK8qjakS-HsXRBeDKRbVljgD4X9isCUecf5dwIuxhA=");
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    color: white;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .mainInfo h3 {
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  .content {
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .temperature {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 64px;
+    font-weight: bold;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .temperature img {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .condition {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  
+  .weather-table {
+    width: 90%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  .weather-table th {
+    background-color: #007acc;
+    color: white;
+    padding: 14px;
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  .weather-table td {
+    background-color: #f0f8ff;
+    color: #333;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .weather-table tr:hover td {
+    background-color: #e6f2ff;
+    transition: background-color 0.2s ease;
+  }
+  
+  @media (max-width: 600px) {
+    .mainInfo h3 {
+      font-size: 1.1rem;
+      padding: 0.75rem;
+    }
+  
+    .temperature {
+      font-size: 48px;
+      gap: 0.5rem;
+    }
+  
+    .temperature img {
+      width: 48px;
+      height: 48px;
+    }
+  
+    .condition {
+      font-size: 1rem;
+    }
+  
+    .weather-table th,
+    .weather-table td {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .weather-table {
+      width: 100%;
+    }
+  }
+  
