@@ -1,0 +1,61 @@
+.days-container{
+    height: 75vh;
+    background: linear-gradient(to bottom, lightpink, #ffffff);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.days{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.day{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:lightblue;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    font-weight: 600;
+}
+
+.day:hover{
+  transform: translateY(-5px);
+}
+
+h2{
+    color: skyblue;
+}
+  @media (max-width: 768px) {
+    .day {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+  
+    h2 {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .days {
+      width: 100%;
+    }
+  
+    .day {
+      font-size: 0.5rem;
+      padding: 0.8rem;
+    }
+  
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+  

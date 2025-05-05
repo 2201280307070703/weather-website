@@ -46,3 +46,25 @@ export const getWeatherHourly = async (lat, lon) => {
 
     return response.data;
 }
+
+export const getWeatherForFiveDays = async (lat, lon) => {
+    const response = await axios.get(`${URL}/fiveDays`, {
+        params:{
+            lat: lat,
+            lon: lon
+        }
+    });
+
+    return response.data;
+}
+
+export const getAstroData = async (lat, lon) => {
+        const response = await axios.get(`${URL}/astro`, {
+            params:{
+                lat: lat,
+                lon: lon
+            }
+        });
+
+        return response.data;
+}

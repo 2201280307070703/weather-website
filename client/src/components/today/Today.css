@@ -1,4 +1,4 @@
-.container {
+.items-container {
     height: 75vh;
     width: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    background: linear-gradient(to bottom, lightblue, #ffffff);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
   }
@@ -14,7 +14,7 @@
   .mainInfo {
     width: 90%;
     max-width: 600px;
-    background-image: url("https://media.istockphoto.com/id/513373486/photo/beautiful-sky-with-white-cloud-background.jpg?s=612x612&w=0&k=20&c=7JK8qjakS-HsXRBeDKRbVljgD4X9isCUecf5dwIuxhA=");
+    background-image: url("../../../public/images/sky.jpg");
     background-size: cover;
     background-position: center;
     border-radius: 16px;

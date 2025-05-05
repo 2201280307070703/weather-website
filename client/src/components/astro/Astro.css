@@ -1,0 +1,79 @@
+.astro-container{
+    height: 75vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #e0f7ff, #fff8dc);
+    position: relative;
+}
+
+.icon{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 80px;
+}
+
+.astro-card {
+    width: 700px;
+    margin: 2rem auto;
+    background: linear-gradient(to bottom, #fff8dc, #e0f7ff);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .astro-card h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .astro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .astro-item {
+    background-color: #ffffffcc;
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .astro-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .astro-item span {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .astro-item p {
+    margin: 0;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  @media (max-width: 600px) {
+    .astro-card {
+      padding: 1rem;
+    }
+  
+    .astro-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .astro-item {
+      font-size: 0.95rem;
+    }
+  }
+  

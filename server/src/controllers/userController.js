@@ -5,10 +5,10 @@ router.post('/register', async (req, res) => {
     const {email, password} = req.body;
 
     try{
-        const token = await userService.register(email, password);
+        const response = await userService.register(email, password);
 
-        res.cookie('auth', token, { httpOnly: true });
-        res.json({successfully: true});
+        res.cookie('auth', response.token, { httpOnly: true });
+        res.json(response);
 
     }catch(error){
         res.status(400).json({msg: error.message});
@@ -19,14 +19,19 @@ router.post('/login', async (req, res) => {
     const {email, password} = req.body;
 
     try{
-        const token = await userService.login(email, password);
-        res.cookie('auth', token, { httpOnly: true });
+        const response = await userService.login(email, password);
+        res.cookie('auth', response.token, { httpOnly: true });
 
-        res.json({successfully: true});
+        res.json(response);
 
     }catch(error){
         res.status(400).json({msg: error.message});
     }
+});
+
+router.post('/logout', (req, res) => {
+    res.clearCookie('auth');
+    res.json({ success: true });
 });
 
 module.exports = router;

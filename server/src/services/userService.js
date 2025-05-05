@@ -18,7 +18,11 @@ exports.register = async (email, password) => {
     }
 
     const token = await jwt.sign(payload, SECRET, { expiresIn: '1d'});
-    return token;
+    return {
+        userId: user._id,
+        email: user.email,
+        token: token
+    };
 }
 
 exports.login = async (email, password) => {
@@ -41,5 +45,9 @@ exports.login = async (email, password) => {
     }
 
     const token = await jwt.sign(payload, SECRET, { expiresIn: '1d'});
-    return token;
+    return {
+        userId: user._id,
+        email: user.email,
+        token: token
+    };
 }

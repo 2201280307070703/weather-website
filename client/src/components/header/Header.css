@@ -51,6 +51,7 @@ nav {
   justify-content: flex-start;
   align-items: center;
   flex: 1 1 100%;
+  color: white;
 }
 
 .nav-link {
@@ -60,41 +61,36 @@ nav {
   border-radius: 20px;
   font-size: 1rem;
   font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .nav-link.active {
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .sunny {
   background-image: url("../../../public/images/sunny.jpg");
-  color: #fcd53f;
 }
 
 .cloudy {
   background-image: url("../../../public/images/cloudy.jpg");
-  color: lightskyblue;
 }
 
 .rainy {
   background-image: url("../../../public/images/rainy.jpg");
-  color: #003366;
 }
 
 .snowy {
   background-image: url("../../../public/images/snowy.jpg");
-  color: #f0f8ff;
 }
 
 .default {
   background-image: url("../../../public/images/default.jpg");
-  color: white;
 }
 
 @media (max-width: 768px) {

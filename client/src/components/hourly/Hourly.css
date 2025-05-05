@@ -1,49 +1,77 @@
-.hourly-forecast-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem 1rem;
-    height: 30vw;
-    overflow: auto;
+.cards-container {
+  height: 75vh;
+  background: linear-gradient(to bottom, lightgreen, #ffffff);
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  overflow-y: auto;
+  height: 85%;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+.hour-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hour-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.hour-card h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.hour-card p {
+  font-size: 1rem;
+  margin: 6px 0;
+  color: #555;
+}
+
+.hour-card strong {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    padding: 1rem;
   }
-  
+
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    max-height: none;
+  }
+
   .hour-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 1rem;
   }
-  
-  .hour-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
-  
+
   .hour-card h3 {
-    font-size: 1.4rem;
-    color: #333;
+    font-size: 1.2rem;
   }
-  
-  .hour-card p {
-    font-size: 1rem;
-    margin: 8px 0;
-    color: #555;
-  }
-  
-  .hour-card strong {
-    color: #333;
-  }
-  
-  @media (max-width: 768px) {
-    .hourly-forecast-cards {
-      padding: 1rem;
-      height: 65vh;
-    }
-  
-    .hour-card {
-      padding: 1rem;
-    }
-  }
-  
+}

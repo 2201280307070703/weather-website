@@ -74,4 +74,44 @@ router.get('/hourly', async (req, res) => {
     }
 });
 
+router.get('/fiveDays', async (req, res) => {
+    const {lat, lon} = req.query;
+
+    try{
+        const response = await weatherService.getWeatherByCoords(lat, lon, 5);
+
+        const result = response.forecast.forecastday.map((day) => {
+            return{
+                date: day.date,
+                maxTemp: day.day.maxtemp_c,
+                minTemp: day.day.mintemp_c,
+                averageTemp: day.day.avgtemp_c,
+                chaceOfRain: day.day.daily_chance_of_rain,
+                chanceOfSnow: day.day.daily_chance_of_snow,
+                state: day.day.condition.text,
+                uvIndex: day.day.uv
+            };
+        });
+
+        res.json(result);
+
+    }catch(error){
+        res.status(400).json({msg: error.message});
+    }
+});
+
+router.get('/astro', async (req, res) => {
+    const {lat, lon} = req.query;
+
+    try{
+        const response = await weatherService.getWeatherByCoords(lat, lon);
+
+        const result = response.forecast.forecastday[0].astro;
+        res.json(result);
+
+    }catch(error){
+        res.status(400).json({msg: error.message});
+    }
+});
+
 module.exports = router;

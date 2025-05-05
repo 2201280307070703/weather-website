@@ -3,8 +3,11 @@ const Path = {
     Today: '/today',
     Hourly: '/hourly',
     ForFiveDays: '/five-days',
-    SunriseAndSunset: '/sunrise-sunset',
-    UVIndex: 'uv-index'
+    Astro: '/astro',
+    Login: '/login',
+    Register: '/register',
+    Logout: '/logout',
+    All: '*'
 };
 
 export default Path;
