@@ -1,4 +1,4 @@
-.not-found-container {
+.notFoundContainer {
   padding: 10rem;
     text-align: center;
     background-color: lightcyan;
@@ -10,25 +10,25 @@
     gap: 1rem;
   }
   
-  .not-found-title {
+  .notFoundTitle {
     font-size: 20rem;
     font-weight: bold;
     color: blue;
   }
   
-  .not-found-message {
+  .notFoundMessage {
     font-size: 20px;
     color: #333;
   }
   
-  .not-found-link {
+  .notFoundLink {
     text-decoration: none;
     font-size: 18px;
     color: #3498db;
     transition: color 0.3s ease;
   }
   
-  .not-found-link:hover {
+  .notFoundLink:hover {
     color: #2c3e50;
   }
   

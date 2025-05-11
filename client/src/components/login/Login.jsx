@@ -1,12 +1,10 @@
 import {useState, useContext} from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AuthenticationContext from '../../contexts/authenticationContext';
 import Path from '../../paths';
 import './Login.css';
 
 export default function Login() {
-    const navigate = useNavigate();
-
     const { loginSubmitHandler } = useContext(AuthenticationContext);
 
     const [formData, setFormData] = useState({
@@ -14,7 +12,7 @@ export default function Login() {
         password: ''
     });
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -26,12 +24,12 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
+        setError('');
 
         try {
             await loginSubmitHandler(formData)
         } catch (error) {
-            setError(error.response.data.msg || "Login error!");
+            setError(error || 'Login error!');
         };
     };
 

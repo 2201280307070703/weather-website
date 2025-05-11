@@ -68,3 +68,9 @@
     text-align: end;
     color: cornflowerblue;
   }
+
+  @media (max-width: 480px) {
+    .loginFormContainer{
+      height: 65vh;
+    }
+  }

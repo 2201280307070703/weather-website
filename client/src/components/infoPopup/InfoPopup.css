@@ -1,4 +1,4 @@
-.info-popup-overlay {
+.infoPopupOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -11,13 +11,12 @@
     z-index: 999;
   }
   
-  .info-popup {
+  .infoPopup {
     background: white;
-    padding: 2rem;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    max-width: 90%;
-    width: 320px;
+    width: 40vw;
+    height: 40vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -26,28 +25,41 @@
     position: relative;
   }
   
-  .info-popup h3 {
+  .infoPopup h3 {
     margin-top: 0;
     color: #007BFF;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;;
   }
   
-  .info-popup p {
+  .infoPopup p {
     color: #333;
     font-size: 1rem;
   }
   
-  .close-btn {
+  .closeBtn {
     position: absolute;
-    top: 10px;
-    right: 12px;
+    top: 1rem;
+    right: 1rem;
     background: none;
     border: none;
-    font-size: 1.4rem;
     cursor: pointer;
     color: #888;
+    width: 1rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
-  .close-btn:hover {
+  .closeBtn:hover {
     color: #000;
+  }
+
+  .message{
+    max-height: 80%;
+    overflow: auto;
+    text-align: center;
   }
   

@@ -30,8 +30,13 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-    res.clearCookie('auth');
-    res.json({ success: true });
+    try{
+        res.clearCookie('auth');
+        res.json({ success: true });
+    }
+    catch(error){
+        res.status(400).json({msg: error.message});
+    }
 });
 
 module.exports = router;

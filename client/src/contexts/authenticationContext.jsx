@@ -50,9 +50,11 @@ export const AuthenticationProvider = ({
                 setAuth({});
                 localStorage.removeItem('accessToken');
             }
-        }
-        finally{
+
             navigate(Path.Home);
+        }
+        catch(error){
+            throw error;
         }
     };
 

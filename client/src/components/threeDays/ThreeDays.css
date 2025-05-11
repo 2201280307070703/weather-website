@@ -1,0 +1,74 @@
+.daysContainer {
+  height: 75vh;
+  background: linear-gradient(to bottom, lightpink, #ffffff);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-top: 3rem;
+  gap: 5rem;
+}
+
+.days {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightblue;
+  border-radius: 10px;
+  padding: 1.5rem;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.day:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: skyblue;
+}
+
+
+@media (max-width: 480px) {
+  .daysContainer{
+    padding-top: 1rem;
+    gap: 1.5rem;
+    height: 65vh;
+    overflow: auto;
+    justify-content: start;
+    padding-top: 2rem;
+  }
+
+  .days {
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .day {
+    width: 100vw;
+    margin-bottom: 10px;
+    font-size: 10px;
+    padding: 12px 6px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .day p{
+    width: 31%;
+  }
+  .daysContainer h2 {
+    font-size: 20px;
+  }
+
+  .day p {
+    font-size: 15px;
+  }
+}

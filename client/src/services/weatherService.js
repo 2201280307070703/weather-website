@@ -2,69 +2,114 @@ import axios from 'axios';
 
 const URL = 'http://localhost:5000/weather';
 
-export const getWeatherForCoordinates = async (lat, lon, days) => {
-    const response = await axios.get(`${URL}/info`, {
-        params:{
-            lat: lat,
-            lon: lon,
-            days: days
-        }
-    });
-
-    return response.data;
-};
-
 export const getCurrentWeatherState = async (lat, lon) => {
-    const response = await axios.get(`${URL}/current-weather-state`, {
-        params:{
-            lat: lat,
-            lon: lon
-        }
-    });
-
-    return response.data;
+    try{
+        const response = await axios.get(`${URL}/current-weather-state`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
+    
+        return response.data;
+    }
+    catch(error){
+        throw error.response.data.msg;
+    }
 };
 
 export const getTodaysWeatherInformation = async (lat, lon) => {
-    const response = await axios.get(`${URL}/today`, {
-        params:{
-            lat: lat,
-            lon: lon
-        }
-    });
+    try{
+        const response = await axios.get(`${URL}/today`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
     
-    return response.data;
+        return response.data;
+    }
+    catch(error){
+        throw error.response.data.msg;
+    }
 }
 
 export const getWeatherHourly = async (lat, lon) => {
-    const response = await axios.get(`${URL}/hourly`, {
-        params:{
-            lat: lat,
-            lon: lon
-        }
-    });
-
-    return response.data;
-}
-
-export const getWeatherForFiveDays = async (lat, lon) => {
-    const response = await axios.get(`${URL}/fiveDays`, {
-        params:{
-            lat: lat,
-            lon: lon
-        }
-    });
-
-    return response.data;
-}
-
-export const getAstroData = async (lat, lon) => {
-        const response = await axios.get(`${URL}/astro`, {
-            params:{
+    try {
+        const response = await axios.get(`${URL}/hourly`, {
+            params: {
                 lat: lat,
                 lon: lon
             }
         });
 
         return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
+
+}
+
+export const getWeatherForThreeDays = async (lat, lon) => {
+    try {
+        const response = await axios.get(`${URL}/threeDays`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
+
+        return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
+}
+
+export const getAstroData = async (lat, lon) => {
+    try {
+        const response = await axios.get(`${URL}/astro`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
+
+        return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
+}
+
+export const getMainWeatherInfoByCoordinates = async (lat, lon) => {
+    try {
+        const response = await axios.get(`${URL}/mainInfo`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
+
+        return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
+}
+
+export const getMainWeatherInfoByCity = async (city) => {
+    try {
+        const response = await axios.get(`${URL}/mainInfo`, {
+            params: {
+                city: city
+            }
+        });
+
+        return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
 }

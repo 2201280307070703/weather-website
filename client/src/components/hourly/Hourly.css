@@ -1,4 +1,4 @@
-.cards-container {
+.cardsContainer {
   height: 75vh;
   background: linear-gradient(to bottom, lightgreen, #ffffff);
   padding: 2rem;
@@ -7,20 +7,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .cards {
-  width: 100%;
+  width: 80%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   overflow-y: auto;
   height: 85%;
-  padding: 1rem 0;
+  padding: 0rem 1.5rem 0rem 0rem;
   box-sizing: border-box;
 }
 
-.hour-card {
+.hourCard {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -29,49 +30,39 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hour-card:hover {
+.hourCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-.hour-card h3 {
+.hourCard h3 {
   font-size: 1.4rem;
   color: #333;
   margin-bottom: 0.5rem;
 }
 
-.hour-card p {
+.hourCard p {
   font-size: 1rem;
   margin: 6px 0;
   color: #555;
 }
 
-.hour-card strong {
+.hourCard strong {
   color: #333;
 }
 
-@media (max-width: 768px) {
-  .cards-container {
+@media (max-width: 480px) {
+  .cardsContainer {
     padding: 1rem;
   }
 
   .cards {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     max-height: none;
+    height: 90vh;
   }
 
-  .hour-card {
+  .hourCard {
     padding: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .cards {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .hour-card h3 {
-    font-size: 1.2rem;
   }
 }

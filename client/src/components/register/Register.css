@@ -68,3 +68,9 @@
     text-align: end;
     color: cornflowerblue;
   }
+
+  @media (max-width: 480px) {
+    .registerFormContainer{
+      height: 65vh;
+    }
+  }

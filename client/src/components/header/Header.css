@@ -37,6 +37,7 @@ h1 {
   font-weight: bold;
   color: #fcd53f;
   flex: 1 1 100%;
+  user-select: none;
 }
 
 h1 a {
@@ -54,7 +55,7 @@ nav {
   color: white;
 }
 
-.nav-link {
+.navLink {
   text-decoration: none;
   color: inherit;
   padding: 0.4rem 0.9rem;
@@ -65,11 +66,11 @@ nav {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-link:hover {
+.navLink:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.nav-link.active {
+.navLink.active {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -93,23 +94,25 @@ nav {
   background-image: url("../../../public/images/default.jpg");
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
+    padding: 12px;
+    height: 25vh;
   }
 
-  nav {
-    justify-content: flex-start;
+  header h1 {
+    font-size: 18px;
+    text-align: center;
   }
 
-  .nav-link {
-    font-size: 0.95rem;
-    padding: 0.4rem 0.75rem;
+  header nav {
+    width: 100%;
+    gap: 8px;
   }
 
-  h1 {
-    font-size: 1.8rem;
+  .navLink {
+    width: 30%;
+    text-align: center;
+    font-size: 16px;
   }
 }

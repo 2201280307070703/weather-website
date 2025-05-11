@@ -1,21 +1,17 @@
-import {useState, useContext} from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useState, useContext } from 'react';
 import AuthenticationContext from '../../contexts/authenticationContext';
-import Path from '../../paths';
 import './Register.css';
 
 export default function Register() {
-    const navigate = useNavigate();
-
     const { registerSubmitHandeler } = useContext(AuthenticationContext);
-    
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
         confirmPassword: ''
     });
 
-    const [error, setError] = useState("");
+    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,13 +23,13 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
+        setError('');
 
-        try{
+        try {
             await registerSubmitHandeler(formData);
         }
-        catch(error){
-            setError(error.response ? error.response.data.msg : error.message);
+        catch (error) {
+            setError(error.message ? error.message : error);
         }
     };
 
@@ -53,7 +49,7 @@ export default function Register() {
                     <label htmlFor='confirmPassword'>Confirm Password:</label>
                     <input type='password' id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
                 </div>
-                <button type='submit'>Login</button>
+                <button type='submit'>Register</button>
             </form>
         </div>
     );

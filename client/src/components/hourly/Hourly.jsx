@@ -1,30 +1,45 @@
 import { useEffect, useState, useContext } from 'react';
-import {LocationContext} from '../../contexts/locationContext';
+import { LocationContext } from '../../contexts/locationContext';
 import * as weatherService from '../../services/weatherService';
+import Spinner from '../spinner/Spinner';
+import InfoPopup from '../infoPopup/InfoPopup';
 import './Hourly.css';
-import Spinner from '../spinner/Spinner'; ''
 
 export default function Hourly() {
-  const location = useContext(LocationContext);
+  const {location, loading} = useContext(LocationContext);
   const [weatherByHours, setWeatherByHours] = useState([]);
+  const [error, setError] = useState('');
+  const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
   useEffect(() => {
-    weatherService.getWeatherHourly(location.latitude, location.longitude)
-      .then(setWeatherByHours)
-      .catch((error) => {
-        console.error('Error fetching weather:', error);
-      })
-  }, [location.latitude, location.longitude])
+    if (!loading) {
+      weatherService.getWeatherHourly(location.latitude, location.longitude)
+        .then(setWeatherByHours)
+        .catch((error) => {
+          setError(error);
+          setInfoPopupVisibility(true);
+        })
+    }
+  }, [loading, location.latitude, location.longitude])
 
-  if (weatherByHours === null || weatherByHours.length === 0) {
+  const handeOnClose = () => {
+    setError('');
+    setInfoPopupVisibility(false);
+  };
+
+  if ((weatherByHours === null || weatherByHours.length === 0 || loading) && !error) {
     return <Spinner />;
   }
 
+  if (infoPopupVisibility) {
+    return <InfoPopup message={error} onClose={handeOnClose} />
+  }
+
   return (
-    <div className="cards-container">
-      <div className="cards">
+    <div className='cardsContainer'>
+      <div className='cards'>
         {weatherByHours.map((hour, index) => (
-          <div className="hour-card" key={index}>
+          <div className='hourCard' key={index}>
             <h3>{hour.time}</h3>
             <p><strong>🌡️ Temp:</strong> {hour.temp}°C</p>
             <p><strong>🤔 Feels Like:</strong> {hour.feelsLike}°C</p>

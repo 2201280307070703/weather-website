@@ -1,4 +1,4 @@
-.items-container {
+.itemsContainer {
     height: 75vh;
     width: 100%;
     display: flex;
@@ -58,7 +58,7 @@
     margin-top: 0.5rem;
   }
   
-  .weather-table {
+  .weatherTable {
     width: 90%;
     max-width: 600px;
     border-collapse: collapse;
@@ -68,7 +68,7 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
   
-  .weather-table th {
+  .weatherTable th {
     background-color: #007acc;
     color: white;
     padding: 14px;
@@ -76,7 +76,7 @@
     font-size: 18px;
   }
   
-  .weather-table td {
+  .weatherTable td {
     background-color: #f0f8ff;
     color: #333;
     padding: 14px;
@@ -84,38 +84,48 @@
     font-weight: 500;
   }
   
-  .weather-table tr:hover td {
+  .weatherTable tr:hover td {
     background-color: #e6f2ff;
     transition: background-color 0.2s ease;
   }
   
-  @media (max-width: 600px) {
+  @media (max-width: 480px) {
+    .itemsContainer{
+      height: 65vh;
+      justify-content: start;
+    }
+    
     .mainInfo h3 {
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding: 0.75rem;
     }
   
+    .content{
+      padding: 0rem 1rem;
+      padding-bottom: 0.5rem;
+    }
+
     .temperature {
-      font-size: 48px;
-      gap: 0.5rem;
+      font-size: 1.5rem;
+      gap: 1rem;
     }
   
     .temperature img {
-      width: 48px;
-      height: 48px;
+      width: 45px;
+      height: 45px;
     }
   
     .condition {
       font-size: 1rem;
     }
   
-    .weather-table th,
-    .weather-table td {
+    .weatherTable th,
+    .weatherTable td {
       font-size: 14px;
       padding: 10px;
     }
   
-    .weather-table {
+    .weatherTable {
       width: 100%;
     }
   }

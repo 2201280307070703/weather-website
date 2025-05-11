@@ -26,3 +26,9 @@ footer{
     background-color: whitesmoke;
     border-radius: 100%;
 }
+
+@media (max-width: 480px) {
+    footer{
+        gap: 0.5rem;
+    }
+}

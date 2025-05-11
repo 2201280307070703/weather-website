@@ -1,4 +1,4 @@
-.astro-container{
+.astroContainer{
     height: 75vh;
     width: 100vw;
     display: flex;
@@ -15,7 +15,7 @@
     font-size: 80px;
 }
 
-.astro-card {
+.astroCard {
     width: 700px;
     margin: 2rem auto;
     background: linear-gradient(to bottom, #fff8dc, #e0f7ff);
@@ -25,20 +25,20 @@
     font-family: 'Segoe UI', sans-serif;
   }
   
-  .astro-card h2 {
+  .astroCard h2 {
     text-align: center;
     color: #333;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
   }
   
-  .astro-grid {
+  .astroGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 1rem;
   }
   
-  .astro-item {
+  .astroItem {
     background-color: #ffffffcc;
     padding: 1rem;
     border-radius: 12px;
@@ -47,33 +47,35 @@
     transition: transform 0.3s ease;
   }
   
-  .astro-item:hover {
+  .astroItem:hover {
     transform: translateY(-5px);
   }
   
-  .astro-item span {
+  .astroItem span {
     font-size: 1.8rem;
     display: block;
     margin-bottom: 0.5rem;
   }
   
-  .astro-item p {
+  .astroItem p {
     margin: 0;
     font-size: 1rem;
     color: #444;
   }
   
-  @media (max-width: 600px) {
-    .astro-card {
-      padding: 1rem;
-    }
+    @media (max-width: 480px) {
+      .astroContainer {
+        height: 65vh;
+        overflow: auto;
+      }
   
-    .astro-grid {
-      grid-template-columns: 1fr;
-    }
+      .icon {
+        display: none;
+      }
   
-    .astro-item {
-      font-size: 0.95rem;
+      .astroCard {
+        width: 90%;
+        margin: auto;
+      }
     }
-  }
   
