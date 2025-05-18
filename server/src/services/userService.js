@@ -3,7 +3,7 @@ const jwt = require('../lib/jwt');
 
 const SECRET = process.env.SECRET;
 
-exports.register = async (email, password) => {
+exports.register = async (email, password, alertsEnabled, city, minTemp, maxTemp) => {
     
     try{
         var existingUser = await User.findOne({email});
@@ -12,7 +12,7 @@ exports.register = async (email, password) => {
             throw new Error('User with this email already exist!');
         }
     
-        const user = await User.create({email, password});
+        const user = await User.create({email, password, alertsEnabled, city, minTemp, maxTemp});
     
         const payload = {
             _id: user._id,
@@ -61,3 +61,11 @@ exports.login = async (email, password) => {
         throw new Error(`Login error: ${error.message}`);
     }
 }
+
+exports.getUsersWithEnabledNotifications = async () => {
+    const users = await User.find({
+        alertsEnabled: true,
+        city: { $nin: [null, ""] }
+      });
+    return users;
+};

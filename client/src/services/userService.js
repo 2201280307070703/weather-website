@@ -2,13 +2,13 @@ import axios from 'axios';
 
 const URL = 'http://localhost:5000/user';
 
-export const register = async (email, password, confirmPassword) => {
+export const register = async (email, password, confirmPassword, alertsEnabled, city, minTemp, maxTemp) => {
     if(password !== confirmPassword){
         throw Error('The password and confirm password do not match!');
     }
 
     try{
-        const response = await axios.post(`${URL}/register`, {email, password});
+        const response = await axios.post(`${URL}/register`, {email, password, alertsEnabled, city, minTemp, maxTemp});
     
         return response.data;
     }

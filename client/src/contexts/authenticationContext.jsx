@@ -30,7 +30,7 @@ export const AuthenticationProvider = ({
 
     const registerSubmitHandeler = async (values) => {
         try{
-            const result = await userService.register(values.email, values.password, values.confirmPassword);
+            const result = await userService.register(values.email, values.password, values.confirmPassword, values.alertsEnabled, values.city, values.minTemp, values.maxTemp);
 
             setAuth(result);
             localStorage.setItem('accessToken', result.token);

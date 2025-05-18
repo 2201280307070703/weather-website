@@ -2,10 +2,10 @@ const router = require('express').Router();
 const userService = require('../services/userService');
 
 router.post('/register', async (req, res) => {
-    const {email, password} = req.body;
+    const {email, password, alertsEnabled, city, minTemp, maxTemp} = req.body;
 
     try{
-        const response = await userService.register(email, password);
+        const response = await userService.register(email, password, alertsEnabled, city, minTemp, maxTemp);
 
         res.cookie('auth', response.token, { httpOnly: true });
         res.json(response);

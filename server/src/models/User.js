@@ -10,6 +10,22 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    alertsEnabled: {
+        type: Boolean,
+        default: false
+    },
+    city: {
+        type: String,
+        default: null
+    },
+    minTemp: {
+        type: Number,
+        default: 0
+    },
+    maxTemp: {
+        type: Number,
+        default: 35
     }
 });
 

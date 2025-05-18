@@ -1,75 +1,88 @@
-.registerFormContainer{
-    width: 100vw;
-    height: 75vh;
-    background-color: lightgoldenrodyellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.registerFormContainer {
+  width: 100vw;
+  height: 75vh;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .formContainer {
-    width: 400px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-    background-color: #fdfdfd;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    font-family: sans-serif;
-  }
-  
-  .formGroup {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  
-  input {
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: border 0.2s;
-  }
-  
-  input:focus {
-    border-color: #0077ff;
-    outline: none;
-  }
-  
-  button {
-    width: 9rem;
-    background-color: #0077ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    text-align: center;
-  }
-  
-  button:hover {
-    background-color: #005fcc;
-  }
+  width: 400px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: #fdfdfd;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  gap: 0.5rem;
+}
 
-  .errorMessage{
-    color: red;
-  }
-  
-  .registerLink{
-    text-align: end;
-    color: cornflowerblue;
-  }
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
 
-  @media (max-width: 480px) {
-    .registerFormContainer{
-      height: 65vh;
-    }
+.ckeckboxGroup{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ckeckboxGroup label{
+  margin: 0px;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border-color: #0077ff;
+  outline: none;
+}
+
+button {
+  width: 9rem;
+  background-color: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+}
+
+button:hover {
+  background-color: #005fcc;
+}
+
+.errorMessage {
+  color: red;
+}
+
+.alertLink {
+  color: cornflowerblue;
+}
+
+.alertLink:hover {
+  color: lightblue;
+}
+
+@media (max-width: 480px) {
+  .registerFormContainer {
+    height: 65vh;
   }
+}
