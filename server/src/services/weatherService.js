@@ -1,5 +1,5 @@
 require('dotenv').config();
-const axios = require("axios");
+const axios = require('axios');
 
 const API_KEY = process.env.WEATHER_API_KEY;
 
@@ -18,7 +18,7 @@ exports.getWeatherByCity = async (city, days) => {
     return response.data;
   }
   catch (error) {
-    throw Error('Invalid city provided!');
+    throw new Error('Invalid city provided!');
   }
 }
 
@@ -35,7 +35,7 @@ exports.getWeatherByCoords = async (lat, lon, days) => {
     return response.data;
   }
   catch (error) {
-    throw Error('Invalid coordinates provided!');
+    throw new Error('Invalid coordinates provided!');
   }
 };
 
@@ -49,39 +49,39 @@ exports.getWeatherCurrentState = async (lat, lon) => {
     });
 
     const weatherCondition = response.data.current.condition.text.toLowerCase();
-    if (weatherCondition.includes("sun") || weatherCondition === "clear") {
-      return "sunny";
+    if (weatherCondition.includes('sun') || weatherCondition === 'clear') {
+      return 'sunny';
     }
     else if (
-      weatherCondition.includes("rain") ||
-      weatherCondition.includes("drizzle") ||
-      weatherCondition.includes("shower") ||
-      weatherCondition.includes("thunder")
+      weatherCondition.includes('rain') ||
+      weatherCondition.includes('drizzle') ||
+      weatherCondition.includes('shower') ||
+      weatherCondition.includes('thunder')
     ) {
-      return "rainy";
+      return 'rainy';
     }
     else if (
-      weatherCondition.includes("snow") ||
-      weatherCondition.includes("sleet") ||
-      weatherCondition.includes("blizzard") ||
-      weatherCondition.includes("ice") ||
-      weatherCondition.includes("freezing")
+      weatherCondition.includes('snow') ||
+      weatherCondition.includes('sleet') ||
+      weatherCondition.includes('blizzard') ||
+      weatherCondition.includes('ice') ||
+      weatherCondition.includes('freezing')
     ) {
-      return "snowy";
+      return 'snowy';
     }
     else if (
-      weatherCondition.includes("cloud") ||
-      weatherCondition.includes("overcast") ||
-      weatherCondition.includes("fog") ||
-      weatherCondition.includes("mist")
+      weatherCondition.includes('cloud') ||
+      weatherCondition.includes('overcast') ||
+      weatherCondition.includes('fog') ||
+      weatherCondition.includes('mist')
     ) {
-      return "cloudy";
+      return 'cloudy';
     }
     else {
-      return "default";
+      return 'default';
     }
   }
   catch (error) {
-    throw Error('Invalid coordinates provided!');
+    throw new Error('Invalid coordinates provided!');
   }
 };

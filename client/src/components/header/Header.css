@@ -46,10 +46,10 @@ h1 a {
 }
 
 nav {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex: 1 1 100%;
   color: white;
@@ -72,6 +72,25 @@ nav {
 
 .navLink.active {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auth{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.email{
+  font-weight: 700;
+  user-select: none;
 }
 
 .sunny {
@@ -108,10 +127,10 @@ nav {
   header nav {
     width: 100%;
     gap: 8px;
+    justify-content: space-between;
   }
 
   .navLink {
-    width: 30%;
     text-align: center;
     font-size: 16px;
   }

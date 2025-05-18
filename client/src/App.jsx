@@ -15,6 +15,7 @@ import NotFound from './components/notFound/NotFound';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
+import VoiceCommand from './components/voiceCommand/VoiceCommand';
 
 function App() {
   return (

@@ -38,15 +38,15 @@ export default function Login() {
             <form onSubmit={handleSubmit} className='formContainer'>
                 <p className='errorMessage'>{error}</p>
                 <div className='formGroup'>
-                    <label htmlFor='email'>Email:</label>
+                    <label htmlFor='email'>Имейл:</label>
                     <input type='email' id='email' name='email' value={formData.email} onChange={handleChange} required />
                 </div>
                 <div className='formGroup'>
-                    <label htmlFor='password'>Password:</label>
+                    <label htmlFor='password'>Парола:</label>
                     <input type='password' id='password' name='password' value={formData.password} onChange={handleChange} required />
                 </div>
-                <button type='submit'>Login</button>
-                <Link className='registerLink' to={Path.Register}>No account yet? Create one now.</Link>
+                <button type='submit'>Влез</button>
+                <Link className='registerLink' to={Path.Register}>Все още нямате профил? Натиснете тук.</Link>
             </form>
         </div>
     );

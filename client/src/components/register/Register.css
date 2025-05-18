@@ -44,16 +44,15 @@
   }
   
   button {
-    width: 6rem;
-    padding: 0.75rem 1.25rem;
+    width: 9rem;
     background-color: #0077ff;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s;
+    text-align: center;
   }
   
   button:hover {

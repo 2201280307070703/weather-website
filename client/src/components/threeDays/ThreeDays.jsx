@@ -37,7 +37,7 @@ export default function ThreeDays() {
 
     return (
         <div className='daysContainer'>
-            <h2>THREE DAYS WEATHER FORECAST</h2>
+            <h2>Прогноза за следващите три дни</h2>
             <ul className='days'>
                 {threeDaysWeather.map((day, index) => {
                     return (
@@ -48,10 +48,10 @@ export default function ThreeDays() {
                                 month: 'long'
                             })}
                             </p>
-                            <p>🌡️ Max: {day.maxTemp}°C / Min: {day.minTemp}°C</p>
-                            <p>📊 Average: {day.averageTemp}°C</p>
-                            <p>🌧️ Rain: {day.chaceOfRain}%</p>
-                            <p>❄️ Snow: {day.chanceOfSnow}</p>
+                            <p>🌡️ Максимална: {day.maxTemp}°C / Минимална: {day.minTemp}°C</p>
+                            <p>📊 Средна: {day.averageTemp}°C</p>
+                            <p>🌧️ Дъжд: {day.chaceOfRain}%</p>
+                            <p>❄️ Сняг: {day.chanceOfSnow}</p>
                             <p>🔆 UV: {day.uvIndex}</p>
                         </li>
                     )

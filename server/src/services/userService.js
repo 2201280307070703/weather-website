@@ -1,53 +1,63 @@
-const User = require("../models/User");
+const User = require('../models/User');
 const jwt = require('../lib/jwt');
-const { SECRET } = require('../constants');
+
+const SECRET = process.env.SECRET;
 
 exports.register = async (email, password) => {
     
-    var existingUser = await User.findOne({email});
+    try{
+        var existingUser = await User.findOne({email});
 
-    if(existingUser){
-        throw new Error("User with this email already exist!");
+        if(existingUser){
+            throw new Error('User with this email already exist!');
+        }
+    
+        const user = await User.create({email, password});
+    
+        const payload = {
+            _id: user._id,
+            username: user.email
+        }
+    
+        const token = await jwt.sign(payload, SECRET, { expiresIn: '1d'});
+        return {
+            userId: user._id,
+            email: user.email,
+            token: token
+        };
     }
-
-    const user = await User.create({email, password});
-
-    const payload = {
-        _id: user._id,
-        username: user.email
+    catch(error){
+        throw new Error(`Register error: ${error.message}`);
     }
-
-    const token = await jwt.sign(payload, SECRET, { expiresIn: '1d'});
-    return {
-        userId: user._id,
-        email: user.email,
-        token: token
-    };
 }
 
 exports.login = async (email, password) => {
+    try{
+        var user = await User.findOne({email});
+
+        if(!user){
+            throw new Error('Invalid credentials!');
+        }
     
-    var user = await User.findOne({email});
-
-    if(!user){
-        throw new Error("Invalid credentials!");
+        const correctPassword = await user.comparePassword(password);
+    
+        if(!correctPassword){
+            throw new Error('Invalid credentials!');
+        }
+    
+        const payload = {
+            _id: user._id,
+            username: user.email
+        }
+    
+        const token = await jwt.sign(payload, SECRET, { expiresIn: '1d'});
+        return {
+            userId: user._id,
+            email: user.email,
+            token: token
+        };
     }
-
-    const correctPassword = await user.comparePassword(password);
-
-    if(!correctPassword){
-        throw new Error("Invalid credentials!");
+    catch(error){
+        throw new Error(`Login error: ${error.message}`);
     }
-
-    const payload = {
-        _id: user._id,
-        username: user.email
-    }
-
-    const token = await jwt.sign(payload, SECRET, { expiresIn: '1d'});
-    return {
-        userId: user._id,
-        email: user.email,
-        token: token
-    };
 }

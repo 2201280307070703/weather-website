@@ -3,6 +3,7 @@ import { LocationContext } from '../../contexts/locationContext';
 import * as weatherService from '../../services/weatherService';
 import Spinner from '../spinner/Spinner';
 import InfoPopup from '../infoPopup/InfoPopup';
+import VoiceCommand from '../voiceCommand/VoiceCommand';
 import './Home.css';
 
 export default function Home() {
@@ -53,6 +54,10 @@ export default function Home() {
     setSearchValue(e.target.value);
   };
 
+  const handleVoiceCommand = (spokenText) => {
+    setSearchValue(spokenText);
+  };
+
   if ((Object.keys(weatherInfo).length === 0 || weatherLoading || locationLoading) && !error) {
     return <Spinner />;
   }
@@ -63,15 +68,18 @@ export default function Home() {
 
   return (
     <div className='homeContainer'>
-      <div className='searchBarContainer'>
-        <input
-          type='text'
-          value={searchValue}
-          onChange={handleOnSearch}
-          placeholder='City...'
-          className='searchInput'
-        />
-        <span className='searchIcon'>🔍</span>
+      <div className='searchBy'>
+        <div className='searchBarContainer'>
+          <input
+            type='text'
+            value={searchValue}
+            onChange={handleOnSearch}
+            placeholder='Град...'
+            className='searchInput'
+          />
+          <span className='searchIcon'>🔍</span>
+        </div>
+        <VoiceCommand onCommandRecognized={handleVoiceCommand} />
       </div>
 
       <div className='info'>
@@ -86,20 +94,20 @@ export default function Home() {
 
           <div className='tempMain'>
             <span className='temp'>{weatherInfo.temperature}°C</span>
-            <span className='feels'>Feels like {weatherInfo.feelsLike}°C</span>
+            <span className='feels'>Усеща се като {weatherInfo.feelsLike}°C</span>
           </div>
 
           <div className='weatherInfo'>
             <div className='infoItem'>
-              <span>💨 Wind</span>
+              <span>💨 Вятър</span>
               <strong>{weatherInfo.windKmH} km/h</strong>
             </div>
             <div className='infoItem'>
-              <span>💧 Humidity</span>
+              <span>💧 Влажност</span>
               <strong>{weatherInfo.humidity}%</strong>
             </div>
             <div className='infoItem'>
-              <span>🔆 UV Index</span>
+              <span>🔆 UV индекс</span>
               <strong>{weatherInfo.uvIndex}</strong>
             </div>
           </div>

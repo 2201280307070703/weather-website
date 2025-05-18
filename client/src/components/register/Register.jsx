@@ -38,18 +38,18 @@ export default function Register() {
             <form onSubmit={handleSubmit} className='formContainer'>
                 <p className='errorMessage'>{error}</p>
                 <div className='formGroup'>
-                    <label htmlFor='email'>Email:</label>
+                    <label htmlFor='email'>Имейл:</label>
                     <input type='email' id='email' name='email' value={formData.email} onChange={handleChange} required />
                 </div>
                 <div className='formGroup'>
-                    <label htmlFor='password'>Password:</label>
+                    <label htmlFor='password'>Парола:</label>
                     <input type='password' id='password' name='password' value={formData.password} onChange={handleChange} required />
                 </div>
                 <div className='formGroup'>
-                    <label htmlFor='confirmPassword'>Confirm Password:</label>
+                    <label htmlFor='confirmPassword'>Потвърдете паролата:</label>
                     <input type='password' id='confirmPassword' name='confirmPassword' value={formData.confirmPassword} onChange={handleChange} required />
                 </div>
-                <button type='submit'>Register</button>
+                <button type='submit'>Регистрация</button>
             </form>
         </div>
     );

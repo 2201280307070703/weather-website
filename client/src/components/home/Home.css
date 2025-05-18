@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 3rem;
     padding: 1rem 3rem;
 }
 
@@ -116,11 +116,19 @@
     font-size: 16px;
   }
 
+  .searchBy{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
   @media (max-width: 480px) {
     .homeContainer{
         height: 65vh;
         padding: 0rem;
         overflow: auto;
+        gap: 1rem;
     }
 
     .weatherCard{
@@ -129,6 +137,10 @@
 
     .searchBarContainer{
       width: 90%;
+    }
+
+    .searchBy{
+      gap: 1rem;
     }
   }
   

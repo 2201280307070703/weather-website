@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const weatherService = require('../services/weatherService');
 
 router.get('/today', async (req, res) => {

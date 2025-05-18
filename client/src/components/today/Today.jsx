@@ -38,7 +38,7 @@ export default function Today() {
     return (
         <div className='itemsContainer'>
             <div className='mainInfo'>
-                <h3>{weather.location}, region {weather.region}, {weather.country}</h3>
+                <h3>{weather.location}, регион {weather.region}, {weather.country}</h3>
                 <div className='content'>
                     <div className='temperature'>
                         <p>{weather.currentTemp}°C</p>
@@ -51,29 +51,29 @@ export default function Today() {
             <table className='weatherTable'>
                 <thead>
                     <tr>
-                        <th>Metric</th>
-                        <th>Value</th>
+                        <th>Метрика</th>
+                        <th>Стойност</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Maximum temperature</td>
+                        <td>Максимална температура</td>
                         <td>{weather.maxTemp}°C</td>
                     </tr>
                     <tr>
-                        <td>Minimum temperature</td>
+                        <td>Минимална температура</td>
                         <td>{weather.minTemp}°C</td>
                     </tr>
                     <tr>
-                        <td>Average temperature</td>
+                        <td>Средна температура</td>
                         <td>{weather.avgTemp}°C</td>
                     </tr>
                     <tr>
-                        <td>Chance of rain</td>
+                        <td>Шансове за валежи</td>
                         <td>{weather.chanceOfRain}%</td>
                     </tr>
                     <tr>
-                        <td>Chance of snow</td>
+                        <td>Шансове за снеговалеж</td>
                         <td>{weather.chanceOfSnow}%</td>
                     </tr>
                 </tbody>

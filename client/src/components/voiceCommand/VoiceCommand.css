@@ -1,0 +1,33 @@
+.recordButton {
+    background-color: #43a047;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(67, 160, 71, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .recordButton:hover{
+    background-color: #388e3c;
+    box-shadow: 0 6px 14px rgba(56, 142, 60, 0.4);
+  }
+
+  .listen{
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(229, 57, 53, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .listen:hover{
+    background-color: #d32f2f;
+    box-shadow: 0 6px 14px rgba(211, 47, 47, 0.4);
+  }

@@ -41,12 +41,12 @@ export default function Hourly() {
         {weatherByHours.map((hour, index) => (
           <div className='hourCard' key={index}>
             <h3>{hour.time}</h3>
-            <p><strong>🌡️ Temp:</strong> {hour.temp}°C</p>
-            <p><strong>🤔 Feels Like:</strong> {hour.feelsLike}°C</p>
-            <p><strong>🌤️ Description:</strong> {hour.state}</p>
-            <p><strong>💨 Wind:</strong> {hour.wind} km/h</p>
-            <p><strong>☔ Rain Chance:</strong> {hour.rainChance}%</p>
-            <p><strong>☀️ UV Index:</strong> {hour.uvIndex}</p>
+            <p><strong>🌡️ Температура:</strong> {hour.temp}°C</p>
+            <p><strong>🤔 Усеща се като:</strong> {hour.feelsLike}°C</p>
+            <p><strong>🌤️ Описание:</strong> {hour.state}</p>
+            <p><strong>💨 Вятър:</strong> {hour.wind} km/h</p>
+            <p><strong>☔ Шансове за валежи:</strong> {hour.rainChance}%</p>
+            <p><strong>☀️ UV индекс:</strong> {hour.uvIndex}</p>
           </div>
         ))}
       </div>

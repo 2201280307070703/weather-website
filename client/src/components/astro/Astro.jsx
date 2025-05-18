@@ -39,31 +39,31 @@ export default function Astro() {
         <div className='astroContainer'>
             <div className='icon'>{astroInfo.is_sun_up ? "🌝" : "🌞"}</div>
             <div className='astroCard'>
-                <h2>🌅 Sunrise to Moonlight</h2>
+                <h2>🌅 Слънце и Луна</h2>
                 <div className='astroGrid'>
                     <div className='astroItem'>
                         <span>🌄</span>
-                        <p><strong>Sunrise:</strong> {astroInfo.sunrise}</p>
+                        <p><strong>Изгрев:</strong> {astroInfo.sunrise}</p>
                     </div>
                     <div className='astroItem'>
                         <span>🌇</span>
-                        <p><strong>Sunset:</strong> {astroInfo.sunset}</p>
+                        <p><strong>Залез:</strong> {astroInfo.sunset}</p>
                     </div>
                     <div className='astroItem'>
                         <span>🌙</span>
-                        <p><strong>Moonrise:</strong> {astroInfo.moonrise}</p>
+                        <p><strong>Лунен изгрев:</strong> {astroInfo.moonrise}</p>
                     </div>
                     <div className='astroItem'>
                         <span>🌌</span>
-                        <p><strong>Moonset:</strong> {astroInfo.moonset}</p>
+                        <p><strong>Лунен залез:</strong> {astroInfo.moonset}</p>
                     </div>
                     <div className='astroItem'>
                         <span>🌓</span>
-                        <p><strong>Phase:</strong> {astroInfo.moon_phase}</p>
+                        <p><strong>Лунна фаза:</strong> {astroInfo.moon_phase}</p>
                     </div>
                     <div className='astroItem'>
                         <span>💡</span>
-                        <p><strong>Illumination:</strong> {astroInfo.moon_illumination}%</p>
+                        <p><strong>Осветление:</strong> {astroInfo.moon_illumination}%</p>
                     </div>
                 </div>
             </div>

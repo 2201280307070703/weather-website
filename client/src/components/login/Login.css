@@ -69,6 +69,10 @@
     color: cornflowerblue;
   }
 
+  .registerLink:hover{
+    color: lightblue;
+  }
+
   @media (max-width: 480px) {
     .loginFormContainer{
       height: 65vh;
