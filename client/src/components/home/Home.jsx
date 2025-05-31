@@ -4,6 +4,7 @@ import * as weatherService from '../../services/weatherService';
 import Spinner from '../spinner/Spinner';
 import InfoPopup from '../infoPopup/InfoPopup';
 import VoiceCommand from '../voiceCommand/VoiceCommand';
+import SearchBar from '../searchBar/SearchBar';
 import './Home.css';
 
 export default function Home() {
@@ -46,7 +47,7 @@ export default function Home() {
   }, [debouncedSearchValue, locationLoading, location.latitude, location.longitude]);
 
   const handleOnClose = () => {
-    setError('');
+    setError(null);
     setInfoPopupVisibility(false);
   };
 
@@ -69,16 +70,7 @@ export default function Home() {
   return (
     <div className='homeContainer'>
       <div className='searchBy'>
-        <div className='searchBarContainer'>
-          <input
-            type='text'
-            value={searchValue}
-            onChange={handleOnSearch}
-            placeholder='Град...'
-            className='searchInput'
-          />
-          <span className='searchIcon'>🔍</span>
-        </div>
+        <SearchBar searchValue={searchValue} handleOnSearch={handleOnSearch}/>
         <VoiceCommand onCommandRecognized={handleVoiceCommand} />
       </div>
 
@@ -115,4 +107,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};

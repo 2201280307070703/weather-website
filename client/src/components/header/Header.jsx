@@ -10,8 +10,8 @@ import './Header.css';
 export default function Header() {
   const { location, loading } = useContext(LocationContext);
   const { isAuthenticated, email } = useContext(AuthenticationContext);
-  const [weather, setWeather] = useState('');
-  const [error, setError] = useState('');
+  const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
   const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Header() {
   }, [loading, location.latitude, location.longitude]);
 
   const handeOnClose = () => {
-    setError('');
+    setError(null);
     setInfoPopupVisibility(false);
   };
 
@@ -43,12 +43,13 @@ export default function Header() {
           <NavLink to={Path.Hourly} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Почасово</NavLink>
           <NavLink to={Path.ForFiveDays} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>За 3 дни</NavLink>
           <NavLink to={Path.Astro} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Небесни светила</NavLink>
+          <NavLink to={Path.TodayVSLastYear} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Днес vs миналата година</NavLink>
         </div>
         <div className='auth'>
           {isAuthenticated ? (
             <>
               <NavLink to={Path.Logout} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Изход</NavLink>
-              <p className='email'>| {email}</p>
+              <NavLink to={Path.UserInfo}  className='email'>| {email.split('@')[0]}</NavLink>
             </>
           ) : (
             <>
@@ -60,4 +61,4 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};

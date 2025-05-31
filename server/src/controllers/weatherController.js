@@ -146,4 +146,25 @@ router.get('/mainInfo', async (req, res) => {
     }
 });
 
+
+router.get('/weatherStats', async (req, res) => {
+    const { lat, lon } = req.query;
+
+    try {
+        const response = await weatherService.getWeatherByCoords(lat, lon);
+
+        const result = {
+            'time': response.forecast.forecastday[0].date,
+            'avgTemp': response.forecast.forecastday[0].day.avgtemp_c,
+            'avgHumidity': response.forecast.forecastday[0].day.avghumidity,
+            'rain': response.forecast.forecastday[0].day.totalprecip_mm,
+        };
+
+        res.json(result);
+
+    } catch (error) {
+        res.status(400).json({ msg: error.message });
+    }
+});
+
 module.exports = router;

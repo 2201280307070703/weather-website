@@ -29,7 +29,7 @@ exports.register = async (email, password, alertsEnabled, city, minTemp, maxTemp
     catch(error){
         throw new Error(`Register error: ${error.message}`);
     }
-}
+};
 
 exports.login = async (email, password) => {
     try{
@@ -60,12 +60,50 @@ exports.login = async (email, password) => {
     catch(error){
         throw new Error(`Login error: ${error.message}`);
     }
-}
+};
 
 exports.getUsersWithEnabledNotifications = async () => {
-    const users = await User.find({
-        alertsEnabled: true,
-        city: { $nin: [null, ""] }
-      });
-    return users;
+    try {
+        const users = await User.find({
+            alertsEnabled: true,
+            city: { $nin: [null, ""] }
+        });
+        return users;
+    }
+    catch (error) {
+        throw new Error(`Error getting users with enabled notifications: ${error.message}`);
+    }
 };
+
+exports.getUserInfo = async (userId) => {
+    try {
+        const user = await User.findById(userId);
+        return user;
+    }
+    catch (error) {
+        throw new Error(`Error getting user by user id: ${error.message}`);
+    }
+};
+
+exports.updateUserInfo = async (userId, updatedData) => {
+    try {
+        const user = await User.findById(userId);
+
+        if(!user){
+            throw new Error('This user do not exist!');
+        }
+
+        user.email = updatedData.email;
+        user.password = updatedData.password;
+        user.alertsEnabled = updatedData.alertsEnabled;
+        user.city = updatedData.city;
+        user.maxTemp = updatedData.maxTemp;
+        user.minTemp = updatedData.minTemp;
+        await user.save();
+
+        return user;
+    }
+    catch (error) {
+        throw new Error(`An error occurred when updating the user's data: ${error.message}`);
+    }
+}

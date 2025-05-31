@@ -5,7 +5,7 @@ import usePersistentState from '../hooks/usePersistentState';
 import * as userService from '../services/userService';
 import Path from '../paths';
 
-const AuthenticationContext = createContext();
+export const AuthenticationContext = createContext();
 
 export const AuthenticationProvider = ({
     children
@@ -64,6 +64,7 @@ export const AuthenticationProvider = ({
         logoutHandler,
         email: auth.email,
         userId: auth.userId,
+        token: auth.token,
         isAuthenticated: !!auth.token
     };
 

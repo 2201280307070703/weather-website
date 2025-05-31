@@ -1,0 +1,41 @@
+.chartContainer {
+    height: 75vh;
+    background: linear-gradient(to bottom, rgb(203, 195, 230), pink);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.chartContainer h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+}
+
+.chartContainer canvas {
+    max-width: 80%;
+    max-height: 55vh;
+    height: auto !important;
+    width: 100% !important;
+}
+
+@media (max-width: 480px) {
+    .chartContainer {
+        height: 65vh;
+        padding: 0rem;
+        overflow: auto;
+        gap: 1rem;
+    }
+
+    .chartContainer h2 {
+        font-size: 1.2rem;
+    }
+
+    .chartContainer canvas {
+        max-height: 45vh;
+    }
+}

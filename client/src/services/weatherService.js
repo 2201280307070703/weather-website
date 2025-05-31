@@ -113,3 +113,19 @@ export const getMainWeatherInfoByCity = async (city) => {
         throw error.response.data.msg;
     }
 }
+
+export const getCurrentWeatherStatsByCoordinates = async (lat, lon) => {
+    try {
+        const response = await axios.get(`${URL}/weatherStats`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
+
+        return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
+}

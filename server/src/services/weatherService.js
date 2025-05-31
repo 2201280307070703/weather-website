@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const axios = require('axios');
 
 const API_KEY = process.env.WEATHER_API_KEY;
@@ -18,9 +19,9 @@ exports.getWeatherByCity = async (city, days) => {
     return response.data;
   }
   catch (error) {
-    throw new Error('Invalid city provided!');
+    throw new Error(`Error getting weather by city name: ${error.message}`);
   }
-}
+};
 
 exports.getWeatherByCoords = async (lat, lon, days) => {
   try {
@@ -35,7 +36,7 @@ exports.getWeatherByCoords = async (lat, lon, days) => {
     return response.data;
   }
   catch (error) {
-    throw new Error('Invalid coordinates provided!');
+    throw new Error(`Error getting weather by coordinates: ${error.message}`);
   }
 };
 
@@ -49,6 +50,7 @@ exports.getWeatherCurrentState = async (lat, lon) => {
     });
 
     const weatherCondition = response.data.current.condition.text.toLowerCase();
+
     if (weatherCondition.includes('sun') || weatherCondition === 'clear') {
       return 'sunny';
     }
@@ -82,6 +84,6 @@ exports.getWeatherCurrentState = async (lat, lon) => {
     }
   }
   catch (error) {
-    throw new Error('Invalid coordinates provided!');
+    throw new Error(`Error getting current weather state: ${error.message}`);
   }
 };

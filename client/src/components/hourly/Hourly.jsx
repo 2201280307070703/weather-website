@@ -8,7 +8,7 @@ import './Hourly.css';
 export default function Hourly() {
   const {location, loading} = useContext(LocationContext);
   const [weatherByHours, setWeatherByHours] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
   useEffect(() => {
@@ -23,11 +23,11 @@ export default function Hourly() {
   }, [loading, location.latitude, location.longitude])
 
   const handeOnClose = () => {
-    setError('');
+    setError(null);
     setInfoPopupVisibility(false);
   };
 
-  if ((weatherByHours === null || weatherByHours.length === 0 || loading) && !error) {
+  if ((weatherByHours.length === 0 || loading) && !error) {
     return <Spinner />;
   }
 
@@ -52,4 +52,4 @@ export default function Hourly() {
       </div>
     </div>
   );
-}
+};

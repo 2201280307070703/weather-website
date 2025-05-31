@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 
 function expressConfig(app) {
     app.use(express.json());

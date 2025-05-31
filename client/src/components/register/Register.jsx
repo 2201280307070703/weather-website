@@ -15,7 +15,7 @@ export default function Register() {
         maxTemp: ''
     });
 
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,7 +27,7 @@ export default function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
+        setError(null);
 
         try {
             await registerSubmitHandeler(formData);
@@ -38,48 +38,48 @@ export default function Register() {
     };
 
     return (
-        <div className="registerFormContainer">
-            <form onSubmit={handleSubmit} className="formContainer">
-                {error && <p className="errorMessage">{error}</p>}
-                <div className="formGroup">
-                    <label htmlFor="email">Имейл:</label>
+        <div className='registerFormContainer'>
+            <form onSubmit={handleSubmit} className='registerForm'>
+                {error && <p className='errorMessage'>{error}</p>}
+                <div className='formGroup'>
+                    <label htmlFor='email'>Имейл:</label>
                     <input
-                        type="email"
-                        id="email"
-                        name="email"
+                        type='email'
+                        id='email'
+                        name='email'
                         value={formData.email}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="formGroup">
-                    <label htmlFor="password">Парола:</label>
+                <div className='formGroup'>
+                    <label htmlFor='password'>Парола:</label>
                     <input
-                        type="password"
-                        id="password"
-                        name="password"
+                        type='password'
+                        id='password'
+                        name='password'
                         value={formData.password}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="formGroup">
-                    <label htmlFor="confirmPassword">Потвърдете паролата:</label>
+                <div className='formGroup'>
+                    <label htmlFor='confirmPassword'>Потвърдете паролата:</label>
                     <input
-                        type="password"
-                        id="confirmPassword"
-                        name="confirmPassword"
+                        type='password'
+                        id='confirmPassword'
+                        name='confirmPassword'
                         value={formData.confirmPassword}
                         onChange={handleChange}
                         required
                     />
                 </div>
-                <div className="ckeckboxGroup">
-                    <label htmlFor="alertsEnabled">Желая нотификации:</label>
+                <div className='ckeckboxGroup'>
+                    <label htmlFor='alertsEnabled'>Желая нотификации:</label>
                     <input
-                        type="checkbox"
-                        id="alertsEnabled"
-                        name="alertsEnabled"
+                        type='checkbox'
+                        id='alertsEnabled'
+                        name='alertsEnabled'
                         checked={formData.alertsEnabled}
                         onChange={(e) =>
                             setFormData((prev) => ({
@@ -91,41 +91,41 @@ export default function Register() {
                 </div>
                 {formData.alertsEnabled && (
                     <>
-                        <div className="formGroup">
-                            <label htmlFor="city">Град:</label>
+                        <div className='formGroup'>
+                            <label htmlFor='city'>Град:</label>
                             <input
-                                type="text"
-                                id="city"
-                                name="city"
+                                type='text'
+                                id='city'
+                                name='city'
                                 value={formData.city}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="formGroup">
-                            <label htmlFor="minTemp">Минимална температура:</label>
+                        <div className='formGroup'>
+                            <label htmlFor='minTemp'>Минимална температура:</label>
                             <input
-                                type="number"
-                                id="minTemp"
-                                name="minTemp"
+                                type='number'
+                                id='minTemp'
+                                name='minTemp'
                                 value={formData.minTemp}
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="formGroup">
-                            <label htmlFor="maxTemp">Максимална температура:</label>
+                        <div className='formGroup'>
+                            <label htmlFor='maxTemp'>Максимална температура:</label>
                             <input
-                                type="number"
-                                id="maxTemp"
-                                name="maxTemp"
+                                type='number'
+                                id='maxTemp'
+                                name='maxTemp'
                                 value={formData.maxTemp}
                                 onChange={handleChange}
                             />
                         </div>
                     </>
                 )}
-                <button type="submit">Регистрация</button>
+                <button type='submit'>Регистрация</button>
             </form>
         </div>
 
     );
-}
+};

@@ -7,9 +7,9 @@
     align-items: center;
 }
 
-.formContainer {
+.lofinForm {
     width: 400px;
-    height: 350px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

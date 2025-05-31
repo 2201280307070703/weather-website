@@ -4,33 +4,30 @@ import InfoPopup from '../infoPopup/InfoPopup';
 
 export default function Logout() {
     const { logoutHandler } = useContext(AuthenticationContext);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
     const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
     useEffect(() => {
         const handleLogout = async () => {
-            try{
+            try {
                 await logoutHandler();
             }
-            catch(error){
+            catch (error) {
                 setError(error);
                 setInfoPopupVisibility(true);
             }
         };
-
         handleLogout();
     }, [logoutHandler]);
 
     const handeOnClose = () => {
-        setError('');
+        setError(null);
         setInfoPopupVisibility(false);
     };
 
     if (infoPopupVisibility) {
-        console.log(error);
-
         return <InfoPopup message={error} onClose={handeOnClose} />
     }
 
     return null;
-}
+};

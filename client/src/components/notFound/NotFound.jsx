@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Path from '../../paths';
 import './NotFound.css';
@@ -11,4 +10,4 @@ export default function NotFound() {
       <Link to={Path.Home} className='notFoundLink'>Go back to Home</Link>
     </div>
   );
-}
+};

@@ -1,0 +1,97 @@
+.userInfoContainer {
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 1rem;
+    gap: 1rem;
+    background: linear-gradient(to bottom, orange, #ffffff);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+  }
+  
+
+.userInfoForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 500px;
+  padding: 25px;
+  border-radius: 16px;
+  background-color: #fff9c4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.userInfoForm .formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.userInfoForm label {
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.userInfoForm input[type="text"],
+.userInfoForm input[type="email"],
+.userInfoForm input[type="password"],
+.userInfoForm input[type="number"] {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.ckeckboxGroup{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ckeckboxGroup label{
+  margin: 0px;
+}
+
+.checkboxGroup label{
+  margin: 0px;
+}
+
+.userInfoForm button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #ffcc80;
+    color: #333;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.userInfoForm button:hover {
+    background-color: #ffb74d;
+}
+
+.formMessage {
+    font-weight: bold;
+    text-align: center;
+}
+
+ @media (max-width: 480px) {
+  .userInfoContainer {
+    height: 65vh;
+    padding-top: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .userInfoContainer h2{
+    font-size: 14px;
+  }
+
+   .userInfoForm {
+     width: 300px;
+   }
+ }

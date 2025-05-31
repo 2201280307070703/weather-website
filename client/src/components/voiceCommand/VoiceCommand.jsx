@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import InfoPopup from '../infoPopup/InfoPopup';
 import './VoiceCommand.css';
 
@@ -6,8 +6,8 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 export default function VoiceCommand({ onCommandRecognized }) {
     const [listening, setListening] = useState(false);
-    const [command, setCommand] = useState('');
-    const [InfoMessage, setInfoMessage] = useState('');
+    const [command, setCommand] = useState(null);
+    const [InfoMessage, setInfoMessage] = useState(null);
     const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
     useEffect(() => {
@@ -49,7 +49,7 @@ export default function VoiceCommand({ onCommandRecognized }) {
     };
 
     const handleOnClose = () => {
-        setInfoMessage('');
+        setInfoMessage(null);
         setInfoPopupVisibility(false);
     };
 

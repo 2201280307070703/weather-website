@@ -8,7 +8,7 @@ import './ThreeDays.css';
 export default function ThreeDays() {
     const {location, loading} = useContext(LocationContext);
     const [threeDaysWeather, setThreeDaysWeather] = useState([]);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
     const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
     useEffect(() => {
@@ -23,11 +23,11 @@ export default function ThreeDays() {
     }, [loading, location.latitude, location.longitude])
 
     const handeOnClose = () => {
-        setError('');
+        setError(null);
         setInfoPopupVisibility(false);
     };
 
-    if ((threeDaysWeather === null || threeDaysWeather.length === 0 || loading) && !error) {
+    if ((threeDaysWeather.length === 0 || loading) && !error) {
         return <Spinner />
     }
 
@@ -59,4 +59,4 @@ export default function ThreeDays() {
             </ul>
         </div>
     );
-}
+};

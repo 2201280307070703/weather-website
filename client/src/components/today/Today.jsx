@@ -7,8 +7,8 @@ import './Today.css';
 
 export default function Today() {
     const {location, loading} = useContext(LocationContext);
-    const [weather, setWeather] = useState({});
-    const [error, setError] = useState('');
+    const [weather, setWeather] = useState(null);
+    const [error, setError] = useState(null);
     const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
     useEffect(() => {
@@ -23,11 +23,11 @@ export default function Today() {
     }, [loading, location.latitude, location.longitude]);
 
     const handeOnClose = () => {
-        setError('');
+        setError(null);
         setInfoPopupVisibility(false);
     };
 
-    if ((Object.keys(weather).length === 0 || loading) && !error) {
+    if ((!weather || loading) && !error) {
         return <Spinner />;
     }
 
@@ -80,4 +80,4 @@ export default function Today() {
             </table>
         </div>
     );
-}
+};

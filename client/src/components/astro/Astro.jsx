@@ -7,8 +7,8 @@ import './Astro.css';
 
 export default function Astro() {
     const {location, loading}= useContext(LocationContext);
-    const [astroInfo, setAstroInfo] = useState({});
-    const [error, setError] = useState('');
+    const [astroInfo, setAstroInfo] = useState(null);
+    const [error, setError] = useState(null);
     const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
     useEffect(() => {
@@ -23,11 +23,11 @@ export default function Astro() {
     }, [loading, location.latitude, location.longitude])
 
     const handeOnClose = () => {
-        setError('');
+        setError(null);
         setInfoPopupVisibility(false);
     };
 
-    if ((Object.keys(astroInfo).length === 0 || loading) && !error) {
+    if ((!astroInfo || loading) && !error) {
         return <Spinner />;
     }
     
@@ -69,4 +69,4 @@ export default function Astro() {
             </div>
         </div>
     );
-}
+};

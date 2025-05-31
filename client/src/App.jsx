@@ -11,11 +11,12 @@ import Footer from './components/footer/Footer';
 import Hourly from './components/hourly/Hourly';
 import ThreeDays from './components/threeDays/ThreeDays';
 import Astro from './components/astro/Astro';
-import NotFound from './components/notFound/NotFound';
+import HistoricalWeather from './components/historicalWeather/HistoricalWeather';
+import UserInfo from './components/userInfo/UserInfo';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
-import VoiceCommand from './components/voiceCommand/VoiceCommand';
+import NotFound from './components/notFound/NotFound';
 
 function App() {
   return (
@@ -28,10 +29,12 @@ function App() {
           <Route path={Path.Hourly} element={<Hourly />} />
           <Route path={Path.ForFiveDays} element={<ThreeDays />} />
           <Route path={Path.Astro} element={<Astro />} />
-          <Route path={Path.All} element={<NotFound />} />
+          <Route path={Path.TodayVSLastYear} element={<HistoricalWeather />} />
+          <Route path={Path.UserInfo} element={<UserInfo />}/>
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Register} element={<Register />} />
           <Route path={Path.Logout} element={<Logout/>}/>
+          <Route path={Path.All} element={<NotFound />} />
         </Routes>
         <Footer />
       </AuthenticationProvider>

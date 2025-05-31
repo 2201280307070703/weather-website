@@ -10,4 +10,4 @@ export default function InfoPopup({message, onClose }) {
       </div>
     </div>
   );
-}
+};

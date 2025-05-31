@@ -12,7 +12,7 @@ export default function Login() {
         password: ''
     });
 
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -24,7 +24,7 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
+        setError(null);
 
         try {
             await loginSubmitHandler(formData)
@@ -35,7 +35,7 @@ export default function Login() {
 
     return (
         <div className='loginFormContainer'>
-            <form onSubmit={handleSubmit} className='formContainer'>
+            <form onSubmit={handleSubmit} className='lofinForm'>
                 <p className='errorMessage'>{error}</p>
                 <div className='formGroup'>
                     <label htmlFor='email'>Имейл:</label>
@@ -50,4 +50,4 @@ export default function Login() {
             </form>
         </div>
     );
-}
+};
