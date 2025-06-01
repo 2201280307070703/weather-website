@@ -3,33 +3,31 @@ import axios from 'axios';
 const URL = 'http://localhost:5000/weather';
 
 export const getCurrentWeatherState = async (lat, lon) => {
-    try{
+    try {
         const response = await axios.get(`${URL}/current-weather-state`, {
             params: {
                 lat: lat,
                 lon: lon
             }
         });
-    
         return response.data;
     }
-    catch(error){
+    catch (error) {
         throw error.response.data.msg;
     }
 };
 
 export const getTodaysWeatherInformation = async (lat, lon) => {
-    try{
+    try {
         const response = await axios.get(`${URL}/today`, {
             params: {
                 lat: lat,
                 lon: lon
             }
         });
-    
         return response.data;
     }
-    catch(error){
+    catch (error) {
         throw error.response.data.msg;
     }
 }
@@ -42,7 +40,6 @@ export const getWeatherHourly = async (lat, lon) => {
                 lon: lon
             }
         });
-
         return response.data;
     }
     catch (error) {
@@ -59,7 +56,6 @@ export const getWeatherForThreeDays = async (lat, lon) => {
                 lon: lon
             }
         });
-
         return response.data;
     }
     catch (error) {
@@ -75,7 +71,6 @@ export const getAstroData = async (lat, lon) => {
                 lon: lon
             }
         });
-
         return response.data;
     }
     catch (error) {
@@ -91,7 +86,6 @@ export const getMainWeatherInfoByCoordinates = async (lat, lon) => {
                 lon: lon
             }
         });
-
         return response.data;
     }
     catch (error) {
@@ -106,7 +100,6 @@ export const getMainWeatherInfoByCity = async (city) => {
                 city: city
             }
         });
-
         return response.data;
     }
     catch (error) {
@@ -122,7 +115,6 @@ export const getCurrentWeatherStatsByCoordinates = async (lat, lon) => {
                 lon: lon
             }
         });
-
         return response.data;
     }
     catch (error) {

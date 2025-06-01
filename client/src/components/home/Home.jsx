@@ -5,6 +5,7 @@ import Spinner from '../spinner/Spinner';
 import InfoPopup from '../infoPopup/InfoPopup';
 import VoiceCommand from '../voiceCommand/VoiceCommand';
 import SearchBar from '../searchBar/SearchBar';
+import Chatbot from '../chatbot/Chatbot';
 import './Home.css';
 
 export default function Home() {
@@ -69,41 +70,45 @@ export default function Home() {
 
   return (
     <div className='homeContainer'>
-      <div className='searchBy'>
-        <SearchBar searchValue={searchValue} handleOnSearch={handleOnSearch}/>
-        <VoiceCommand onCommandRecognized={handleVoiceCommand} />
-      </div>
-
-      <div className='info'>
-        <div className='weatherCard'>
-          <div className='weatherHeader'>
-            <div>
-              <h1>{weatherInfo.city}</h1>
-              <p className='state'>{weatherInfo.state}</p>
+      <div className='infoFeatures'>
+        <div className='searchBy'>
+          <SearchBar searchValue={searchValue} handleOnSearch={handleOnSearch} />
+          <VoiceCommand onCommandRecognized={handleVoiceCommand} />
+        </div>
+        <div className='info'>
+          <div className='weatherCard'>
+            <div className='weatherHeader'>
+              <div>
+                <h1>{weatherInfo.city}</h1>
+                <p className='state'>{weatherInfo.state}</p>
+              </div>
+              <img className='weatherIcon' src={weatherInfo.stateIcon} alt='state image' />
             </div>
-            <img className='weatherIcon' src={weatherInfo.stateIcon} alt='state image' />
-          </div>
 
-          <div className='tempMain'>
-            <span className='temp'>{weatherInfo.temperature}°C</span>
-            <span className='feels'>Усеща се като {weatherInfo.feelsLike}°C</span>
-          </div>
+            <div className='tempMain'>
+              <span className='temp'>{weatherInfo.temperature}°C</span>
+              <span className='feels'>Усеща се като {weatherInfo.feelsLike}°C</span>
+            </div>
 
-          <div className='weatherInfo'>
-            <div className='infoItem'>
-              <span>💨 Вятър</span>
-              <strong>{weatherInfo.windKmH} km/h</strong>
-            </div>
-            <div className='infoItem'>
-              <span>💧 Влажност</span>
-              <strong>{weatherInfo.humidity}%</strong>
-            </div>
-            <div className='infoItem'>
-              <span>🔆 UV индекс</span>
-              <strong>{weatherInfo.uvIndex}</strong>
+            <div className='weatherInfo'>
+              <div className='infoItem'>
+                <span>💨 Вятър</span>
+                <strong>{weatherInfo.windKmH} km/h</strong>
+              </div>
+              <div className='infoItem'>
+                <span>💧 Влажност</span>
+                <strong>{weatherInfo.humidity}%</strong>
+              </div>
+              <div className='infoItem'>
+                <span>🔆 UV индекс</span>
+                <strong>{weatherInfo.uvIndex}</strong>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className='chatbot'>
+        <Chatbot />
       </div>
     </div>
   );

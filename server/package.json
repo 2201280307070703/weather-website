@@ -4,12 +4,14 @@
   "description": "A smart weather website that shows live sensor data, external weather info, location-based forecasts, historical trends, dynamic visuals, and personalized alerts with user authentication.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^29.7.0",
     "nodemon": "^3.1.9"
   },
   "dependencies": {
@@ -22,6 +24,7 @@
     "mongoose": "^8.13.2",
     "node-cron": "^4.0.5",
     "nodemailer": "^7.0.3",
+    "openai": "^5.0.1",
     "xml2js": "^0.6.2"
   }
 }

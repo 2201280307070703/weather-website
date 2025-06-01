@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 
+//coordinates for Sofia, Bulgaria
 const DEFAULT_LOCATION = {
   latitude: 42.6977,
   longitude: 23.3219,

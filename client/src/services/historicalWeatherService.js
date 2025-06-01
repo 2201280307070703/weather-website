@@ -11,10 +11,8 @@ export const getHistoricalWeather = async (lat, lon, date) => {
                 date
             }
         });
-
         return response.data;
-
     } catch (error) {
-        throw error.response?.data?.msg || 'Възникна грешка при взимане на данните.';
+        throw error.response?.data?.msg;
     }
 };

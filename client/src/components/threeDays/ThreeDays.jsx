@@ -51,7 +51,7 @@ export default function ThreeDays() {
                             <p>🌡️ Максимална: {day.maxTemp}°C / Минимална: {day.minTemp}°C</p>
                             <p>📊 Средна: {day.averageTemp}°C</p>
                             <p>🌧️ Дъжд: {day.chaceOfRain}%</p>
-                            <p>❄️ Сняг: {day.chanceOfSnow}</p>
+                            <p>❄️ Сняг: {day.chanceOfSnow}%</p>
                             <p>🔆 UV: {day.uvIndex}</p>
                         </li>
                     )

@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const axios = require('axios');
 
 const API_KEY = process.env.WEATHER_API_KEY;
