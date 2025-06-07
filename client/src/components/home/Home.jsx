@@ -5,7 +5,6 @@ import Spinner from '../spinner/Spinner';
 import InfoPopup from '../infoPopup/InfoPopup';
 import VoiceCommand from '../voiceCommand/VoiceCommand';
 import SearchBar from '../searchBar/SearchBar';
-import Chatbot from '../chatbot/Chatbot';
 import './Home.css';
 
 export default function Home() {
@@ -106,9 +105,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-      <div className='chatbot'>
-        <Chatbot />
       </div>
     </div>
   );
