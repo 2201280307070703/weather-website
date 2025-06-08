@@ -15,8 +15,8 @@ export default function Hourly() {
     if (!loading) {
       weatherService.getWeatherHourly(location.latitude, location.longitude)
         .then(setWeatherByHours)
-        .catch((error) => {
-          setError(error);
+        .catch(() => {
+          setError('Нещо се случи. Моля презаредете страницата!');
           setInfoPopupVisibility(true);
         })
     }

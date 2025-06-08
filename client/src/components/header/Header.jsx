@@ -4,35 +4,22 @@ import { LocationContext } from '../../contexts/locationContext';
 import AuthenticationContext from '../../contexts/authenticationContext';
 import Path from '../../paths';
 import * as weatherService from '../../services/weatherService';
-import InfoPopup from '../infoPopup/InfoPopup';
 import './Header.css';
 
 export default function Header() {
   const { location, loading } = useContext(LocationContext);
   const { isAuthenticated, email } = useContext(AuthenticationContext);
   const [weather, setWeather] = useState(null);
-  const [error, setError] = useState(null);
-  const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
 
   useEffect(() => {
     if (!loading) {
       weatherService.getCurrentWeatherState(location.latitude, location.longitude)
         .then(setWeather)
         .catch((error) => {
-          setError(error);
-          setInfoPopupVisibility(true);
+          console.log(`Header error: ${error}`);
         });
     }
   }, [loading, location.latitude, location.longitude]);
-
-  const handeOnClose = () => {
-    setError(null);
-    setInfoPopupVisibility(false);
-  };
-
-  if (infoPopupVisibility) {
-    return <InfoPopup message={error} onClose={handeOnClose} />
-  }
 
   return (
     <header className={(weather ? weather : 'default')}>

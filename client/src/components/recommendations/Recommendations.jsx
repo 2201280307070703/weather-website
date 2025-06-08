@@ -16,8 +16,8 @@ export default function Recommendations() {
             console.log(location);
             weatherService.getRecommendationsDependingOnWeather(location.latitude, location.longitude)
                 .then(setRecommendations)
-                .catch((error) => {
-                    setError(error);
+                .catch(() => {
+                    setError('Нещо се случи. Моля презаредете страницата!');
                     setInfoPopupVisibility(true);
                 });
         }

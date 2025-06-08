@@ -25,11 +25,10 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-
         try {
             await loginSubmitHandler(formData)
-        } catch (error) {
-            setError(error || 'Login error!');
+        } catch(error) {
+            setError(error || 'Възникна грешка при влизане. Моля опитайте отново!');
         };
     };
 

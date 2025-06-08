@@ -15,8 +15,8 @@ export default function Today() {
         if (!loading) {
             weatherService.getTodaysWeatherInformation(location.latitude, location.longitude)
                 .then(setWeather)
-                .catch((error) => {
-                    setError(error);
+                .catch(() => {
+                    setError('Нещо се случи. Моля презаредете страницата!');
                     setInfoPopupVisibility(true);
                 });
         }

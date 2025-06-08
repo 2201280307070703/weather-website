@@ -14,6 +14,7 @@ export default function Home() {
   const [infoPopupVisibility, setInfoPopupVisibility] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [debouncedSearchValue, setDebouncedSearchValue] = useState(searchValue);
+  const [requestSource, setRequestSource] = useState('');
   const [weatherLoading, setWeatherLoading] = useState(false);
 
   useEffect(() => {
@@ -25,26 +26,39 @@ export default function Home() {
   }, [searchValue]);
 
   useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        setWeatherLoading(true);
-        if (debouncedSearchValue) {
-          const data = await weatherService.getMainWeatherInfoByCity(debouncedSearchValue);
-          setWeatherInfo(data);
-        } else if (!locationLoading && location.latitude && location.longitude) {
-          const data = await weatherService.getMainWeatherInfoByCoordinates(location.latitude, location.longitude);
-          setWeatherInfo(data);
-        }
-      } catch (error) {
-        setError(error);
-        setInfoPopupVisibility(true);
-      } finally {
-        setWeatherLoading(false);
-      }
-    };
+  const isSearch = !!debouncedSearchValue;
 
-    fetchWeather();
-  }, [debouncedSearchValue, locationLoading, location.latitude, location.longitude]);
+  if (isSearch) {
+    setRequestSource('search');
+  } else {
+    setRequestSource('location');
+  }
+
+  const fetchWeather = async () => {
+    try {
+      setWeatherLoading(true);
+
+      if (isSearch) {
+        const data = await weatherService.getMainWeatherInfoByCity(debouncedSearchValue);
+        setWeatherInfo(data);
+      } else if (!locationLoading && location.latitude && location.longitude) {
+        const data = await weatherService.getMainWeatherInfoByCoordinates(location.latitude, location.longitude);
+        setWeatherInfo(data);
+      }
+    } catch (error) {
+      if (requestSource === 'search') {
+        setError('Неуспешно търсене. Проверете името на града и опитайте отново.');
+      } else {
+        setError('Грешка при зареждане на данните от вашето местоположение.');
+      }
+      setInfoPopupVisibility(true);
+    } finally {
+      setWeatherLoading(false);
+    }
+  };
+
+  fetchWeather();
+}, [debouncedSearchValue, locationLoading, location.latitude, location.longitude]);
 
   const handleOnClose = () => {
     setError(null);

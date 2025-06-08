@@ -15,8 +15,8 @@ export default function Astro() {
         if(!loading){
             weatherService.getAstroData(location.latitude, location.longitude)
             .then(setAstroInfo)
-            .catch((error) => {
-                setError(error);
+            .catch(() => {
+                setError('Нещо се случи. Моля презаредете страницата!');
                 setInfoPopupVisibility(true);
             });
         }

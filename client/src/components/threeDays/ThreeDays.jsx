@@ -15,8 +15,8 @@ export default function ThreeDays() {
         if (!loading) {
             weatherService.getWeatherForThreeDays(location.latitude, location.longitude)
                 .then(setThreeDaysWeather)
-                .catch((error) => {
-                    setError(error);
+                .catch(() => {
+                    setError('Нещо се случи. Моля презаредете страницата!');
                     setInfoPopupVisibility(true);
                 })
         }

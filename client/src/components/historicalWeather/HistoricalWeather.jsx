@@ -42,8 +42,8 @@ export default function HistoricalComparisonChart() {
                     setCurrentData(thisYear);
                     setLastYearData(lastYear);
                 })
-                .catch((error) => {
-                    setError(error);
+                .catch(() => {
+                    setError('Нещо се случи. Моля презаредете страницата!');
                     setInfoPopupVisibility(true);
                 });
         }
