@@ -6,6 +6,7 @@ const Path = {
     Astro: '/astro',
     TodayVSLastYear: '/today-vs-last-year',
     UserInfo: '/user-info',
+    Recommendations: '/recommendations',
     Login: '/login',
     Register: '/register',
     Logout: '/logout',

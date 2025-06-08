@@ -4,8 +4,8 @@ const express = require('express');
 const cors = require('cors');
 
 const router = require('./routes');
-const expressConfig = require('./config/expressConfig');
-const dbConnect = require('./config/dbConfig');
+const expressConfig = require('./configs/expressConfig');
+const dbConnect = require('./configs/dbConfig');
 const startWeatherNotifier = require('./scheduler/weatherNotifier');
 
 const app = express();

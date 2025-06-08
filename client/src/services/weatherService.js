@@ -121,3 +121,20 @@ export const getCurrentWeatherStatsByCoordinates = async (lat, lon) => {
         throw error.response.data.msg;
     }
 }
+
+export const getRecommendationsDependingOnWeather = async (lat, lon) => {
+    try {
+        const response = await axios.get(`${URL}/recommendations`, {
+            params: {
+                lat: lat,
+                lon: lon
+            }
+        });
+        console.log(response.data);
+
+        return response.data;
+    }
+    catch (error) {
+        throw error.response.data.msg;
+    }
+}

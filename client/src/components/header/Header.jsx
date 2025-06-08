@@ -44,6 +44,7 @@ export default function Header() {
           <NavLink to={Path.ForFiveDays} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>За 3 дни</NavLink>
           <NavLink to={Path.Astro} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Небесни светила</NavLink>
           <NavLink to={Path.TodayVSLastYear} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Днес vs миналата година</NavLink>
+          <NavLink to={Path.Recommendations} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Препоръки</NavLink>
         </div>
         <div className='auth'>
           {isAuthenticated ? (

@@ -20,7 +20,7 @@ export default function ThreeDays() {
                     setInfoPopupVisibility(true);
                 })
         }
-    }, [loading, location.latitude, location.longitude])
+    }, [loading, location.latitude, location.longitude]);
 
     const handeOnClose = () => {
         setError(null);

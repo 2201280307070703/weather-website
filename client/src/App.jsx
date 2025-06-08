@@ -17,6 +17,7 @@ import Login from './components/login/Login';
 import Register from './components/register/Register';
 import Logout from './components/logout/Logout';
 import NotFound from './components/notFound/NotFound';
+import Recommendations from './components/recommendations/Recommendations';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path={Path.Astro} element={<Astro />} />
           <Route path={Path.TodayVSLastYear} element={<HistoricalWeather />} />
           <Route path={Path.UserInfo} element={<UserInfo />}/>
+          <Route path={Path.Recommendations} element={<Recommendations />}/>
           <Route path={Path.Login} element={<Login />} />
           <Route path={Path.Register} element={<Register />} />
           <Route path={Path.Logout} element={<Logout/>}/>
