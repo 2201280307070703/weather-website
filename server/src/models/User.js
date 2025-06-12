@@ -15,17 +15,21 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    recommendationsEnabled: {
+        type: Boolean,
+        default: false
+    },
     city: {
         type: String,
         default: null
     },
     minTemp: {
         type: Number,
-        default: 0
+        default: null
     },
     maxTemp: {
         type: Number,
-        default: 35
+        default: null
     }
 });
 

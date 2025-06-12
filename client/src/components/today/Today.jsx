@@ -38,7 +38,7 @@ export default function Today() {
     return (
         <div className='itemsContainer'>
             <div className='mainInfo'>
-                <h3>{weather.location}, регион {weather.region}, {weather.country}</h3>
+                <h3>{weather.location}</h3>
                 <div className='content'>
                     <div className='temperature'>
                         <p>{weather.currentTemp}°C</p>

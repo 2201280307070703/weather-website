@@ -1,12 +1,17 @@
-.chartContainer {
-    height: 75vh;
-    background: linear-gradient(to bottom, rgb(203, 195, 230), pink);
+.chartContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 1rem;
+    height: 90%;
+    width: 100%;
+    padding: 2rem;;
+}
+
+.chartContainer > h2
+{
+    color: #2f3e75;
 }
 
 .chartContainer h2 {

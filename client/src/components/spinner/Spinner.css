@@ -2,8 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
-    background-color: rgba(135, 206, 250, 0.4);
+    height: 100%;
   }
   
   .spinner {

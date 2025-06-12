@@ -1,78 +1,65 @@
 .recommendationsContainer {
-    height: 75vh;
-    background: linear-gradient(to bottom, violet, lightblue);
-    padding: 2rem;
-    box-sizing: border-box;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.recommendationsWrapper {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 12px;
-}
-
-.sectionTitle {
-  text-align: center;
+.title {
   font-size: 26px;
-  margin-bottom: 30px;
-  color: #222;
+  font-weight: 700;
+  color: 	#2f3e75;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
-.recommendationSection {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+.subtitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: 	#2f3e75;
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-.recommendationSection:hover {
-  transform: translateY(-2px);
+.recommendations{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 90%;
+  height: 70%;
+  padding: 2rem 4rem;
 }
 
-.sectionHeading {
+.recommendations > .recommendation:nth-child(2) {
+  align-self: flex-end;
+}
+
+.recommendation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  background-color: 	#72A0C1;
+}
+
+.recommendation h2{
+  font-size: 22px;
+  color: #FFF0F5;
+}
+
+.recommendation h3{
   font-size: 20px;
-  color: #333;
-  margin-bottom: 10px;
 }
 
-.sectionText {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.5;
+.recommendation p{
+  font-size: 18px;
 }
 
 @media (max-width: 480px) {
-  .recommendationsContainer {
-    height: 65vh;
-  }
 
-  .recommendationsWrapper {
-    padding: 16px;
-  }
-
-  .sectionTitle {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .recommendationSection {
-    padding: 16px;
-  }
-
-  .sectionHeading {
-    font-size: 18px;
-  }
-
-  .sectionText {
-    font-size: 14px;
-  }
 }

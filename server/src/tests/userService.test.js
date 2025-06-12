@@ -13,10 +13,6 @@ describe('register', () => {
     it('should return user data and token on successful register', async () => {
         const email = 'new@example.com';
         const password = 'password123';
-        const alertsEnabled = true;
-        const city = 'Sofia';
-        const minTemp = 10;
-        const maxTemp = 25;
 
         const mockUser = {
             _id: 'user123',
@@ -27,10 +23,10 @@ describe('register', () => {
         User.create.mockResolvedValue(mockUser);
         jwt.sign.mockResolvedValue('mocked-token');
 
-        const result = await userService.register(email, password, alertsEnabled, city, minTemp, maxTemp);
+        const result = await userService.register(email, password);
 
         expect(User.findOne).toHaveBeenCalledWith({ email });
-        expect(User.create).toHaveBeenCalledWith({ email, password, alertsEnabled, city, minTemp, maxTemp });
+        expect(User.create).toHaveBeenCalledWith({ email, password });
         expect(jwt.sign).toHaveBeenCalled();
         expect(result).toEqual({
             userId: mockUser._id,

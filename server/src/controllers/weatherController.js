@@ -10,8 +10,6 @@ router.get('/today', async (req, res) => {
 
         const result = {
             'location': response.location.name,
-            'region': response.location.region,
-            'country': response.location.country,
             'currentTemp': response.current.temp_c,
             'currentWeatherCondition': response.current.condition.text,
             'currentWeatherConditionIcon': response.current.condition.icon,
@@ -180,46 +178,115 @@ router.get('/recommendations', async (req, res) => {
         const maxWind = response.forecast.forecastday[0].day.maxwind_kph;
 
         const result = {
-            sports: '',
-            clothing: '',
-            mood: ''
+            sports: {
+                title: '',
+                suggestions: []
+            },
+            clothes: {
+                title: '',
+                suggestions: []
+            },
+            mood: {
+                title: ''
+            },
+            activities: {
+                title: '',
+                suggestions: []
+            }
         };
 
-        // Sport
-        if (willItRain || willItSnow || maxWind > 40) {
-            result.sports = 'По-добре тренирай на закрито – времето е неподходящо.';
+        // sports
+        if (willItRain || willItSnow || maxWind > 35) {
+            result.sports.title = 'Неблагоприятни условия за спорт на открито.';
+            result.sports.suggestions = [
+                'Тренирай у дома с йога или кардио',
+                'Посети близък фитнес',
+                'Раздвижи се с упражнения за мобилност'
+            ];
         } else if (maxTemp >= 18 && maxWind < 25) {
-            result.sports = 'Идеално време за джогинг, колоездене или разходка.';
-        } else if (maxTemp < 5) {
-            result.sports = 'Много студено – спортът на закрито е по-подходящ.';
+            result.sports.title = 'Чудесно време за активност навън.';
+            result.sports.suggestions = [
+                'Излез за джогинг или разходка',
+                'Карай колело в парка',
+                'Играй футбол или волейбол на открито'
+            ];
         } else {
-            result.sports = 'Може да направиш лека активност навън.';
+            result.sports.title = 'Възможни са кратки занимания навън.';
+            result.sports.suggestions = [
+                'Направи разходка в квартала',
+                'Раздвижи се с 15-минутна тренировка',
+                'Изпробвай нещо ново у дома (йога, пилатес)'
+            ];
         }
 
-        // Clothes
+        // clothes
         if (maxTemp >= 25) {
-            result.clothing = 'Облечи се леко – тениска и къси панталони.';
+            result.clothes.title = 'Горещ ден – облечи се леко.';
+            result.clothes.suggestions = [
+                'Тениска и къси панталони',
+                'Леки сандали или маратонки',
+                'Шапка и слънчеви очила'
+            ];
         } else if (minTemp < 5 || willItSnow) {
-            result.clothing = 'Студено е – облечи се с яке, шапка и шал.';
+            result.clothes.title = 'Студено и/или снежно – облечи се топло.';
+            result.clothes.suggestions = [
+                'Зимно яке, шал и шапка',
+                'Топли обувки',
+                'Ръкавици и термобельо'
+            ];
         } else if (willItRain) {
-            result.clothing = 'Вземи си дъждобран или чадър – възможни са валежи.';
+            result.clothes.title = 'Дъждовно време – подготви се.';
+            result.clothes.suggestions = [
+                'Дъждобран или яке с качулка',
+                'Чадър',
+                'Непромокаеми обувки'
+            ];
         } else {
-            result.clothing = 'Носи лека връхна дреха – времето е променливо.';
+            result.clothes.title = 'Умерено време – подходящо за леки дрехи.';
+            result.clothes.suggestions = [
+                'Лека връхна дреха',
+                'Удобни обувки',
+                'Дънки или спортен панталон'
+            ];
         }
 
-        // Mood
-        if (willItSnow) {
-            result.mood = 'Може да е красиво навън – направи си топъл чай и се наслади на гледката.';
-        } else if (willItRain) {
-            result.mood = 'Дъждовен ден – идеален за филм, книга или уютна вечер у дома.';
-        } else if (maxTemp >= 20) {
-            result.mood = 'Слънчев ден – отличен за срещи, разходки и добро настроение!';
+        // activities
+        if (willItRain || willItSnow || maxWind > 35) {
+            result.activities.title = 'Времето не е подходящо за далечни пътувания.';
+            result.activities.suggestions = [
+                'Посети местно кафене или книжарница',
+                'Остани у дома и направи нещо креативно',
+                'Разгледай виртуални турове или изложби'
+            ];
+        } else if (maxTemp >= 18 && maxWind < 20) {
+            result.activities.title = 'Страхотно време за излизане.';
+            result.activities.suggestions = [
+                'Отиди на пикник в парка',
+                'Посети природна забележителност',
+                'Разходи се до близък град'
+            ];
         } else {
-            result.mood = 'Спокоен ден – направи нещо за себе си и релаксирай.';
+            result.activities.title = 'Кратки разходки в града са чудесна идея.';
+            result.activities.suggestions = [
+                'Разходи се в центъра с кафе в ръка',
+                'Посети изложба или местен пазар',
+                'Направи си ден за себе си в града'
+            ];
+        }
+
+        // mood
+        if (willItRain) {
+            result.mood.title = 'Дъждовното време може да те кара да се чувстваш малко подтиснато';
+        } else if (willItSnow) {
+            result.mood.title = 'Снежният ден носи спокойствие и уют';
+        } else if (maxTemp >= 20) {
+            result.mood.title = 'Слънцето може би те кара да си в отлично настроение';
+        } else {
+            result.mood.title = 'Времето е спокойно – идеално за релакс';
         }
 
         res.json(result);
-        
+
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }

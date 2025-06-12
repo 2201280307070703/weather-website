@@ -9,10 +9,6 @@ export default function Register() {
         email: '',
         password: '',
         confirmPassword: '',
-        alertsEnabled: false,
-        city: '',
-        minTemp: '',
-        maxTemp: ''
     });
 
     const [error, setError] = useState(null);
@@ -74,58 +70,8 @@ export default function Register() {
                         required
                     />
                 </div>
-                <div className='ckeckboxGroup'>
-                    <label htmlFor='alertsEnabled'>Желая нотификации:</label>
-                    <input
-                        type='checkbox'
-                        id='alertsEnabled'
-                        name='alertsEnabled'
-                        checked={formData.alertsEnabled}
-                        onChange={(e) =>
-                            setFormData((prev) => ({
-                                ...prev,
-                                alertsEnabled: e.target.checked,
-                            }))
-                        }
-                    />
-                </div>
-                {formData.alertsEnabled && (
-                    <>
-                        <div className='formGroup'>
-                            <label htmlFor='city'>Град:</label>
-                            <input
-                                type='text'
-                                id='city'
-                                name='city'
-                                value={formData.city}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className='formGroup'>
-                            <label htmlFor='minTemp'>Минимална температура:</label>
-                            <input
-                                type='number'
-                                id='minTemp'
-                                name='minTemp'
-                                value={formData.minTemp}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className='formGroup'>
-                            <label htmlFor='maxTemp'>Максимална температура:</label>
-                            <input
-                                type='number'
-                                id='maxTemp'
-                                name='maxTemp'
-                                value={formData.maxTemp}
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </>
-                )}
                 <button type='submit'>Регистрация</button>
             </form>
         </div>
-
     );
 };

@@ -1,11 +1,11 @@
 .homeContainer {
-  height: 75vh;
-  background: linear-gradient(to bottom, rgb(203, 195, 227), pink);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .infoFeatures {

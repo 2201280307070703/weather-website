@@ -1,6 +1,6 @@
 .cardsContainer {
-  height: 75vh;
-  background: linear-gradient(to bottom, lightgreen, #ffffff);
+  height: 100%;
+  width: 100%;
   padding: 2rem;
   box-sizing: border-box;
   overflow: hidden;

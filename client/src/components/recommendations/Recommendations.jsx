@@ -13,7 +13,6 @@ export default function Recommendations() {
 
     useEffect(() => {
         if (!loading) {
-            console.log(location);
             weatherService.getRecommendationsDependingOnWeather(location.latitude, location.longitude)
                 .then(setRecommendations)
                 .catch(() => {
@@ -35,25 +34,32 @@ export default function Recommendations() {
     if (infoPopupVisibility) {
         return <InfoPopup message={error} onClose={handeOnClose} />
     }
-
+    
     return (
-        <div className='recommendationsContainer'>
-            <div className="recommendationsWrapper">
-                <h2 className="sectionTitle">Препоръки за деня</h2>
-
-                <div className="recommendationSection">
-                    <h3 className="sectionHeading">🏃 Спорт</h3>
-                    <p className="sectionText">{recommendations.sports}</p>
+        <div className="recommendationsContainer">
+            <h2 className="title">{recommendations.mood.title},</h2>
+            <h3 className="subtitle">затова имаме следните предложения за теб:</h3>
+            <div className='recommendations'>
+                <div className='recommendation'>
+                    <h2>Облекло 👇</h2>
+                    <h3>{recommendations.clothes.title}</h3>
+                    {recommendations.activities.suggestions.map((cloth, index) => (
+                        <p key={index}> 👉 {cloth}</p>
+                    ))}
                 </div>
-
-                <div className="recommendationSection">
-                    <h3 className="sectionHeading">👕 Облекло</h3>
-                    <p className="sectionText">{recommendations.clothing}</p>
+                <div className='recommendation'>
+                    <h2>Спорт 👇</h2>
+                    <h3>{recommendations.sports.title}</h3>
+                    {recommendations.sports.suggestions.map((sport, index) => (
+                        <p key={index}> 👉 {sport}</p>
+                    ))}
                 </div>
-
-                <div className="recommendationSection">
-                    <h3 className="sectionHeading">🌞 Настроение</h3>
-                    <p className="sectionText">{recommendations.mood}</p>
+                <div className='recommendation'>
+                    <h2>Развлечения 👇</h2>
+                    <h3>{recommendations.activities.title}</h3>
+                    {recommendations.activities.suggestions.map((activity, index) => (
+                        <p key={index}> 👉 {activity}</p>
+                    ))}
                 </div>
             </div>
         </div>

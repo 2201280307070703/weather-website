@@ -3,10 +3,10 @@ const userService = require('../services/userService');
 const verifyToken = require('../middlewares/authMiddleware');
 
 router.post('/register', async (req, res) => {
-    const { email, password, alertsEnabled, city, minTemp, maxTemp } = req.body;
+    const { email, password} = req.body;
 
     try {
-        const response = await userService.register(email, password, alertsEnabled, city, minTemp, maxTemp);
+        const response = await userService.register(email, password);
 
         res.cookie('auth', response.token, { httpOnly: true });
         res.json(response);

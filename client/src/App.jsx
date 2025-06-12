@@ -24,24 +24,31 @@ function App() {
     <LocationProvider>
       <AuthenticationProvider>
         <Header />
-        <Routes>
-          <Route path={Path.Home} element={<Home />} />
-          <Route path={Path.Today} element={<Today />} />
-          <Route path={Path.Hourly} element={<Hourly />} />
-          <Route path={Path.ForFiveDays} element={<ThreeDays />} />
-          <Route path={Path.Astro} element={<Astro />} />
-          <Route path={Path.TodayVSLastYear} element={<HistoricalWeather />} />
-          <Route path={Path.UserInfo} element={<UserInfo />}/>
-          <Route path={Path.Recommendations} element={<Recommendations />}/>
-          <Route path={Path.Login} element={<Login />} />
-          <Route path={Path.Register} element={<Register />} />
-          <Route path={Path.Logout} element={<Logout/>}/>
-          <Route path={Path.All} element={<NotFound />} />
-        </Routes>
+        <div className="mainContainer">
+          <div className="cloud cloud1"></div>
+          <div className="cloud cloud2"></div>
+          <div className="cloud cloud3"></div>
+          <div className='content'>
+            <Routes>
+              <Route path={Path.Home} element={<Home />} />
+              <Route path={Path.Today} element={<Today />} />
+              <Route path={Path.Hourly} element={<Hourly />} />
+              <Route path={Path.ForFiveDays} element={<ThreeDays />} />
+              <Route path={Path.Astro} element={<Astro />} />
+              <Route path={Path.TodayVSLastYear} element={<HistoricalWeather />} />
+              <Route path={Path.UserInfo} element={<UserInfo />} />
+              <Route path={Path.Recommendations} element={<Recommendations />} />
+              <Route path={Path.Login} element={<Login />} />
+              <Route path={Path.Register} element={<Register />} />
+              <Route path={Path.Logout} element={<Logout />} />
+              <Route path={Path.All} element={<NotFound />} />
+            </Routes>
+          </div>
+        </div>
         <Footer />
       </AuthenticationProvider>
     </LocationProvider>
   )
-}
+};
 
 export default App

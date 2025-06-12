@@ -1,12 +1,16 @@
 .daysContainer {
-  height: 75vh;
-  background: linear-gradient(to bottom, lightpink, #ffffff);
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   padding-top: 3rem;
   gap: 5rem;
+}
+
+.daysContainer > h2{
+  color: #2f3e75;
 }
 
 .days {
