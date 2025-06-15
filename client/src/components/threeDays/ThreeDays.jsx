@@ -37,7 +37,7 @@ export default function ThreeDays() {
 
     return (
         <div className='daysContainer'>
-            <h2>Прогноза за следващите три дни</h2>
+            <h2>Тридневна прогноза за времето</h2>
             <ul className='days'>
                 {threeDaysWeather.map((day, index) => {
                     return (

@@ -86,7 +86,7 @@ exports.getUsersWithEnabledRecommendations = async () => {
         return users;
     }
     catch (error) {
-        throw new Error(`Error getting users with enabled notifications: ${error.message}`);
+        throw new Error(`Error getting users with enabled recommendations: ${error.message}`);
     }
 };
 

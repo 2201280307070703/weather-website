@@ -114,7 +114,7 @@ describe('getUsersWithEnabledNotifications', () => {
         jest.clearAllMocks();
     });
 
-    it('should return users with enabled notifications and provided city', async () => {
+    it('should return users with enabled notifications, provided city max and min temp', async () => {
         const mockUsers = [
             { email: 'user1@abv.bg', alertsEnabled: true, city: 'Sofia' },
             { email: 'user2@abv.bg', alertsEnabled: true, city: 'Stara Zagora' }
@@ -126,7 +126,9 @@ describe('getUsersWithEnabledNotifications', () => {
 
         expect(User.find).toHaveBeenCalledWith({
             alertsEnabled: true,
-            city: { $nin: [null, ""] }
+            city: { $nin: [null, ""] },
+            minTemp: { $ne: null },
+            maxTemp: { $ne: null }
         });
 
         expect(result).toEqual(mockUsers);
@@ -137,6 +139,38 @@ describe('getUsersWithEnabledNotifications', () => {
 
         await expect(userService.getUsersWithEnabledNotifications()).rejects.toThrow(
             'Error getting users with enabled notifications: DB error'
+        );
+    });
+});
+
+describe('getUsersWithEnabledRecommendations', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
+    it('should return users with enabled recommendations and provided city', async () => {
+        const mockUsers = [
+            { email: 'user1@abv.bg', alertsEnabled: true, city: 'Sofia' },
+            { email: 'user2@abv.bg', alertsEnabled: true, city: 'Stara Zagora' }
+        ];
+
+        User.find.mockResolvedValue(mockUsers);
+
+        const result = await userService.getUsersWithEnabledRecommendations();
+
+        expect(User.find).toHaveBeenCalledWith({
+            recommendationsEnabled: true,
+            city: { $nin: [null, ""] }
+        });
+
+        expect(result).toEqual(mockUsers);
+    });
+
+    it('should throw an error if User.find fails', async () => {
+        User.find.mockRejectedValue(new Error('DB error'));
+
+        await expect(userService.getUsersWithEnabledRecommendations()).rejects.toThrow(
+            'Error getting users with enabled recommendations: DB error'
         );
     });
 });
@@ -178,6 +212,7 @@ describe('updateUserInfo', () => {
             email: 'old@example.com',
             password: 'oldpass',
             alertsEnabled: false,
+            recommendationsEnabled: false,
             city: 'OldCity',
             maxTemp: 30,
             minTemp: 10,
@@ -190,6 +225,7 @@ describe('updateUserInfo', () => {
             email: 'new@example.com',
             password: 'newpass',
             alertsEnabled: true,
+            recommendationsEnabled: true,
             city: 'NewCity',
             maxTemp: 35,
             minTemp: 5,
@@ -202,6 +238,7 @@ describe('updateUserInfo', () => {
         expect(mockUser.email).toBe(updatedData.email);
         expect(mockUser.password).toBe(updatedData.password);
         expect(mockUser.alertsEnabled).toBe(updatedData.alertsEnabled);
+        expect(mockUser.recommendationsEnabled).toBe(updatedData.recommendationsEnabled);
         expect(mockUser.city).toBe(updatedData.city);
         expect(mockUser.maxTemp).toBe(updatedData.maxTemp);
         expect(mockUser.minTemp).toBe(updatedData.minTemp);
@@ -215,7 +252,7 @@ describe('updateUserInfo', () => {
         User.findById.mockResolvedValue(null);
 
         await expect(userService.updateUserInfo('nonexistentId', {}))
-            .rejects.toThrow('This user do not exist!');
+            .rejects.toThrow('This user does not exist!');
     });
 
     it('should throw error if findById throws', async () => {

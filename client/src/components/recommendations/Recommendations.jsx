@@ -36,14 +36,14 @@ export default function Recommendations() {
     }
     
     return (
-        <div className="recommendationsContainer">
-            <h2 className="title">{recommendations.mood.title},</h2>
-            <h3 className="subtitle">затова имаме следните предложения за теб:</h3>
+        <div className='recommendationsContainer'>
+            <h2 className='title'>{recommendations.mood.title},</h2>
+            <h3 className='subtitle'>затова имаме следните предложения за теб:</h3>
             <div className='recommendations'>
                 <div className='recommendation'>
                     <h2>Облекло 👇</h2>
                     <h3>{recommendations.clothes.title}</h3>
-                    {recommendations.activities.suggestions.map((cloth, index) => (
+                    {recommendations.clothes.suggestions.map((cloth, index) => (
                         <p key={index}> 👉 {cloth}</p>
                     ))}
                 </div>

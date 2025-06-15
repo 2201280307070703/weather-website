@@ -5,28 +5,29 @@ const weatherService = require('../services/weatherService');
 const notificationService = require('../services/notificationService');
 
 function startWeatherNotifier() {
-  cron.schedule('0 * * * *', async () => {
+  cron.schedule('0 8 * * *', async () => {
     try {
       const users = await userService.getUsersWithEnabledNotifications();
 
       for (let user of users) {
         try {
           const weather = await weatherService.getWeatherByCity(user.city);
-          const temp = weather.current.temp_c;
+          const dailyMinTemp = weather.forecast.forecastday[0].day.mintemp_c;
+          const dailyMaxTemp = weather.forecast.forecastday[0].day.maxtemp_c;
 
-          if (temp <= user.minTemp) {
+          if (dailyMinTemp <= user.minTemp) {
             await notificationService.sentEmail(
               user.email,
               '❄️ Weather Alert: Temperature is too low!',
-              `This is a weather alert to inform you that the temperature in your city has dropped below your set threshold. Current temperature: ${temp}°C`
+              `This is a weather alert to inform you that the minimum temperature in your city is expected to drop below your set threshold of ${user.minTemp}°C. Forecasted minimum temperature: ${dailyMinTemp}°C.`
             );
           }
 
-          if (temp >= user.maxTemp) {
+          if (dailyMaxTemp >= user.maxTemp) {
             await notificationService.sentEmail(
               user.email,
               '🔥 Weather Alert: Temperature is too high!',
-              `This is a weather alert to inform you that the temperature in your city has risen above your set threshold. Current temperature: ${temp}°C`
+              `This is a weather alert to inform you that the maximum temperature in your city is expected to rise above your set threshold of ${user.maxTemp}°C. Forecasted maximum temperature: ${dailyMaxTemp}°C.`
             );
           }
         }

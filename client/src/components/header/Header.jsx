@@ -10,6 +10,7 @@ export default function Header() {
   const { location, loading } = useContext(LocationContext);
   const { isAuthenticated, email } = useContext(AuthenticationContext);
   const [weather, setWeather] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!loading) {
@@ -24,7 +25,8 @@ export default function Header() {
   return (
     <header className={(weather ? weather : 'default')}>
       <h1><NavLink to={Path.Home}>🌞SunnySide</NavLink></h1>
-      <nav>
+      <div className='burger' onClick={() => setMenuOpen(!menuOpen)}>&#9776;</div>
+      <nav className={menuOpen ? 'open' : ''}>
         <div className='pages'>
           <NavLink to={Path.Today} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Днес</NavLink>
           <NavLink to={Path.Hourly} className={({ isActive }) => isActive ? 'navLink active' : 'navLink'}>Почасово</NavLink>

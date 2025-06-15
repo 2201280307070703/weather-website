@@ -63,47 +63,47 @@ export default function UserInfo() {
     }
 
     return (
-        <div className="userInfoContainer">
+        <div className='userInfoContainer'>
             <h2>Данни на потребителя - преглед и промяна</h2>
-            <form className="userInfoForm" onSubmit={handleSubmit}>
-                {message && <p className="formMessage">{message}</p>}
-                <div className="formGroup">
-                    <label htmlFor="email">Имейл:</label>
-                    <input type="email" id="email" name="email" value={userInfo.email} onChange={handleChange} required />
+            <form className='userInfoForm' onSubmit={handleSubmit}>
+                {message && <p className='formMessage'>{message}</p>}
+                <div className='formGroup'>
+                    <label htmlFor='email'>Имейл:</label>
+                    <input type='email' id='email' name='email' value={userInfo.email} onChange={handleChange} required />
                 </div>
-                <div className="formGroup">
-                    <label htmlFor="password">Парола:</label>
-                    <input type="password" id="password" name="password" value={userInfo.password || ''} onChange={handleChange} required />
+                <div className='formGroup'>
+                    <label htmlFor='password'>Парола:</label>
+                    <input type='password' id='password' name='password' value={userInfo.password || ''} onChange={handleChange} required />
                 </div>
-                <div className="ckeckboxGroup">
-                    <label htmlFor="alertsEnabled">Желая нотификации за опасни температури:</label>
-                    <input type="checkbox" id="alertsEnabled" name="alertsEnabled" checked={userInfo.alertsEnabled} onChange={handleChange} />
+                <div className='ckeckboxGroup'>
+                    <label htmlFor='alertsEnabled'>Желая нотификации за опасни температури:</label>
+                    <input type='checkbox' id='alertsEnabled' name='alertsEnabled' checked={userInfo.alertsEnabled} onChange={handleChange} />
                 </div>
-                <div className="ckeckboxGroup">
-                    <label htmlFor="recommendationsEnabled">Желая препоръки за уикендите:</label>
-                    <input type="checkbox" id="recommendationsEnabled" name="recommendationsEnabled" checked={userInfo.recommendationsEnabled} onChange={handleChange} />
+                <div className='ckeckboxGroup'>
+                    <label htmlFor='recommendationsEnabled'>Желая препоръки за уикендите:</label>
+                    <input type='checkbox' id='recommendationsEnabled' name='recommendationsEnabled' checked={userInfo.recommendationsEnabled} onChange={handleChange} />
                 </div>
                 {
                     (userInfo.alertsEnabled || userInfo.recommendationsEnabled) &&
-                    <div className="formGroup">
-                        <label htmlFor="city">Град:</label>
-                        <input type="text" id="city" name="city" value={userInfo.city} onChange={handleChange} />
+                    <div className='formGroup'>
+                        <label htmlFor='city'>Град:</label>
+                        <input type='text' id='city' name='city' value={userInfo.city} onChange={handleChange} />
                     </div>
                 }
                 {
                     userInfo.alertsEnabled &&
                     <>
-                        <div className="formGroup">
-                            <label htmlFor="minTemp">Минимална температура:</label>
-                            <input type="number" id="minTemp" name="minTemp" value={userInfo.minTemp} onChange={handleChange} />
+                        <div className='formGroup'>
+                            <label htmlFor='minTemp'>Минимална температура:</label>
+                            <input type='number' id='minTemp' name='minTemp' value={userInfo.minTemp} onChange={handleChange} />
                         </div>
-                        <div className="formGroup">
-                            <label htmlFor="maxTemp">Максимална температура:</label>
-                            <input type="number" id="maxTemp" name="maxTemp" value={userInfo.maxTemp} onChange={handleChange} />
+                        <div className='formGroup'>
+                            <label htmlFor='maxTemp'>Максимална температура:</label>
+                            <input type='number' id='maxTemp' name='maxTemp' value={userInfo.maxTemp} onChange={handleChange} />
                         </div>
                     </>
                 }
-                <button type="submit">Запази</button>
+                <button type='submit'>Запази</button>
             </form>
         </div>
     );

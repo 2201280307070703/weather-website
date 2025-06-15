@@ -24,10 +24,10 @@ function App() {
     <LocationProvider>
       <AuthenticationProvider>
         <Header />
-        <div className="mainContainer">
-          <div className="cloud cloud1"></div>
-          <div className="cloud cloud2"></div>
-          <div className="cloud cloud3"></div>
+        <div className='mainContainer'>
+          <div className='cloud cloud1'></div>
+          <div className='cloud cloud2'></div>
+          <div className='cloud cloud3'></div>
           <div className='content'>
             <Routes>
               <Route path={Path.Home} element={<Home />} />
