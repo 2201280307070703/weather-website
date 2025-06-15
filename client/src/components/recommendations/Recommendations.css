@@ -61,5 +61,42 @@
 }
 
 @media (max-width: 480px) {
+  .title,
+  .subtitle {
+    font-size: 14px;
+  }
 
+  .subtitle {
+    margin-bottom: 1rem;
+  }
+
+  .recommendations {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    height: 90%;
+    width: 95%;
+    gap: 0.5rem;
+    align-items: start;
+    padding: 0.5rem;
+  }
+
+  .recommendation {
+    width: 100%;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .recommendation h2 {
+    font-size: 18px;
+  }
+
+  .recommendation h3 {
+    font-size: 16px;
+  }
+
+  .recommendation p {
+    font-size: 14px;
+  }
 }

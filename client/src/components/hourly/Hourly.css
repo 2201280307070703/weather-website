@@ -65,4 +65,8 @@
   .hourCard {
     padding: 1rem;
   }
+
+  .hourCard p {
+    font-size: 0.8rem;
+  }
 }

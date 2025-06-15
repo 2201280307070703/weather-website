@@ -73,8 +73,12 @@
     color: lightblue;
   }
 
-  @media (max-width: 480px) {
-    .loginFormContainer{
-      height: 65vh;
+    @media (max-width: 480px) {
+      .loginFormContainer {
+        height: 65vh;
+      }
+  
+      .registerLink {
+        font-size: 0.8rem;
+      }
     }
-  }

@@ -113,42 +113,28 @@ nav {
   background-image: url("../../../public/images/default.jpg");
 }
 
-.burger {
-  display: none;
-  font-size: 2rem;
-  cursor: pointer;
-  user-select: none;
-  color: #fcd53f;
-  margin-left: auto;
-}
-
-@media (max-width: 768px) {
-  nav {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1rem;
   }
 
-  nav.open {
-    display: flex;
-  }
+    .pages {
+      flex-wrap: wrap;
+      justify-content: start;
+    }
 
-  .burger {
-    display: block;
-  }
-
-  .pages,
-  .auth {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+    .auth{
+      flex-wrap: wrap;
+      justify-content: start;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
 
   .navLink {
-    width: 100%;
-    text-align: center;
-    padding: 0.8rem 1rem;
-    font-size: 1.1rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
   }
 }

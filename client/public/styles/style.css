@@ -8,7 +8,7 @@
 
 html,
 body {
-  height: 100%;
+  height: 100vh;
   font-family: sans-serif;
 }
 
@@ -38,13 +38,9 @@ ol {
   list-style: none;
 }
 
-body {
-  background-color: lightgray;
-}
-
 .mainContainer {
   position: relative;
-  height: 75vh;
+  height: 70vh !important;
   width: 100vw;
   overflow: hidden;
   display: flex;
