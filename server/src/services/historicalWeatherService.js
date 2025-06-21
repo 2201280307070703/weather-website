@@ -17,7 +17,7 @@ exports.getWeatherByCoordinatesAndDate = async (latitude, longitude, date) => {
         const daily = response.data.daily;
         
         if (!daily) {
-            throw new Error('No weather data available for this date');
+            throw new Error('Няма намерени данни за времето на тази дата.');
         }
 
         const result = {
@@ -30,6 +30,6 @@ exports.getWeatherByCoordinatesAndDate = async (latitude, longitude, date) => {
         return result;
     }
     catch (error) {
-        throw new Error(`Error getting historical weather: ${error.message}`);
+        throw new Error(`Възникна грешка при вземането на исторически данни: ${error.message}`);
     }
 };

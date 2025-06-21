@@ -7,7 +7,7 @@ export default function NotFound() {
     <div className='notFoundContainer'>
       <h1 className='notFoundTitle'>404</h1>
       <p className='notFoundMessage'>Страницата не е намерена😞</p>
-      <Link to={Path.Home} className='notFoundLink'>Go back to Home</Link>
+      <Link to={Path.Home} className='notFoundLink'>Към началната страница</Link>
     </div>
   );
 };

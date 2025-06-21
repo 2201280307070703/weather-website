@@ -1,35 +1,58 @@
 .notFoundContainer {
-    padding: 10rem;
-    text-align: center;
-    background-color: lightcyan;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+  padding: 10rem;
+  text-align: center;
+  background-color: lightcyan;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notFoundTitle {
+  font-size: 20rem;
+  font-weight: bold;
+  color: blue;
+}
+
+.notFoundMessage {
+  font-size: 20px;
+  color: #333;
+}
+
+.notFoundLink {
+  text-decoration: none;
+  font-size: 18px;
+  color: #3498db;
+  transition: color 0.3s ease;
+}
+
+.notFoundLink:hover {
+  color: #2c3e50;
+}
+
+@media (max-width: 480px) {
+  .notFoundContainer {
+    padding: 4rem;
   }
-  
+
   .notFoundTitle {
-    font-size: 20rem;
+    font-size: 8rem;
     font-weight: bold;
     color: blue;
   }
-  
+
   .notFoundMessage {
-    font-size: 20px;
+    font-size: 16px;
     color: #333;
   }
-  
+
   .notFoundLink {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 14px;
     color: #3498db;
     transition: color 0.3s ease;
   }
-  
-  .notFoundLink:hover {
-    color: #2c3e50;
-  }
-  
+}

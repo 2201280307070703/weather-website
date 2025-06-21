@@ -13,6 +13,6 @@ export const getHistoricalWeather = async (lat, lon, date) => {
         });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.msg;
+        throw error.response.data.msg;
     }
 };

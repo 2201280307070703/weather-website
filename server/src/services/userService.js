@@ -9,7 +9,7 @@ exports.register = async (email, password) => {
         var existingUser = await User.findOne({email});
 
         if(existingUser){
-            throw new Error('User with this email already exist!');
+            throw new Error('Вече има съществуващ акаунт с този имейл.');
         }
     
         const user = await User.create({email, password});
@@ -27,7 +27,7 @@ exports.register = async (email, password) => {
         };
     }
     catch(error){
-        throw new Error(`Register error: ${error.message}`);
+        throw new Error(`Грешка при регистриране: ${error.message}`);
     }
 };
 
@@ -36,13 +36,13 @@ exports.login = async (email, password) => {
         var user = await User.findOne({email});
 
         if(!user){
-            throw new Error('Invalid credentials!');
+            throw new Error('Невалиден имейл или парола.');
         }
     
         const correctPassword = await user.comparePassword(password);
     
         if(!correctPassword){
-            throw new Error('Invalid credentials!');
+            throw new Error('Невалиден имейл или парола.');
         }
     
         const payload = {
@@ -58,7 +58,7 @@ exports.login = async (email, password) => {
         };
     }
     catch(error){
-        throw new Error(`Login error: ${error.message}`);
+        throw new Error(`Грешка при влизане: ${error.message}`);
     }
 };
 
@@ -73,7 +73,7 @@ exports.getUsersWithEnabledNotifications = async () => {
         return users;
     }
     catch (error) {
-        throw new Error(`Error getting users with enabled notifications: ${error.message}`);
+        throw new Error(error.message);
     }
 };
 
@@ -86,7 +86,7 @@ exports.getUsersWithEnabledRecommendations = async () => {
         return users;
     }
     catch (error) {
-        throw new Error(`Error getting users with enabled recommendations: ${error.message}`);
+        throw new Error(error.message);
     }
 };
 
@@ -96,24 +96,24 @@ exports.getUserInfo = async (userId) => {
         return user;
     }
     catch (error) {
-        throw new Error(`Error getting user by user id: ${error.message}`);
+        throw new Error(error.message);
     }
 };
 
 exports.updateUserInfo = async (userId, updatedData) => {
     if (updatedData.recommendationsEnabled && !updatedData.city.trim()) {
-        throw new Error('To receive weekend recommendations, please select a city!');
+        throw new Error('За да получите предложения за уикенда, моля изберете град.');
     }
 
     if (updatedData.alertsEnabled && (!updatedData.city.trim() || !updatedData.maxTemp && !updatedData.minTemp)) {
-        throw new Error('To receive critical weather alerts, please select a city and set both maximum and minimum temperatures!');
+        throw new Error('За да получите предупреждения при критични температури, моля изберете град, минимална и максимална температура.');
     }
 
     try {
         const user = await User.findById(userId);
 
         if (!user) {
-            throw new Error('This user does not exist!');
+            throw new Error('Такъв потребител не съществува.');
         }
 
         user.email = updatedData.email;
@@ -128,6 +128,6 @@ exports.updateUserInfo = async (userId, updatedData) => {
         return user;
     }
     catch (error) {
-        throw new Error(`An error occurred when updating the user's data: ${error.message}`);
+        throw new Error(`Грешка при редактиране на потребителските данни: ${error.message}`);
     }
 }

@@ -5,7 +5,6 @@ router.get('/today', async (req, res) => {
     const {lat, lon } = req.query;
 
     try {
-
         const response = await weatherService.getWeatherByCoords(lat, lon, 1);
 
         const result = {

@@ -10,7 +10,6 @@ export default function Header() {
   const { location, loading } = useContext(LocationContext);
   const { isAuthenticated, email } = useContext(AuthenticationContext);
   const [weather, setWeather] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!loading) {

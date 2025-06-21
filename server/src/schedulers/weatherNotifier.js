@@ -18,16 +18,16 @@ function startWeatherNotifier() {
           if (dailyMinTemp <= user.minTemp) {
             await notificationService.sentEmail(
               user.email,
-              '❄️ Weather Alert: Temperature is too low!',
-              `This is a weather alert to inform you that the minimum temperature in your city is expected to drop below your set threshold of ${user.minTemp}°C. Forecasted minimum temperature: ${dailyMinTemp}°C.`
+              '❄️ Внимание: Много ниска температура!',
+              `Това е предупреждение за времето, което ви информира, че минималната температура във вашия град се очаква да падне под зададения от вас праг от ${user.minTemp}°C. Прогнозирана минимална температура: ${dailyMinTemp}°C.`
             );
           }
 
           if (dailyMaxTemp >= user.maxTemp) {
             await notificationService.sentEmail(
               user.email,
-              '🔥 Weather Alert: Temperature is too high!',
-              `This is a weather alert to inform you that the maximum temperature in your city is expected to rise above your set threshold of ${user.maxTemp}°C. Forecasted maximum temperature: ${dailyMaxTemp}°C.`
+              '🔥 Внимание: Много висока температура!',
+              `Това е предупреждение за времето, което ви информира, че максималната температура във вашия град се очаква да надвиши зададения от вас праг от ${user.maxTemp}°C. Прогнозирана максимална температура: ${dailyMaxTemp}°C.`
             );
           }
         }

@@ -17,7 +17,7 @@ exports.getWeatherByCity = async (city, days) => {
     return response.data;
   }
   catch (error) {
-    throw new Error(`Error getting weather by city name: ${error.message}`);
+    throw new Error(`Възникна грешка при получаване на данни за времето по името на града.`);
   }
 };
 
@@ -34,7 +34,7 @@ exports.getWeatherByCoords = async (lat, lon, days) => {
     return response.data;
   }
   catch (error) {
-    throw new Error(`Error getting weather by coordinates: ${error.message}`);
+    throw new Error(`Възникна грешка при получаване на данни за времето по координати.`);
   }
 };
 
@@ -82,6 +82,6 @@ exports.getWeatherCurrentState = async (lat, lon) => {
     }
   }
   catch (error) {
-    throw new Error(`Error getting current weather state: ${error.message}`);
+    throw new Error(error.message);
   }
 };

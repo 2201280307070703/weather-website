@@ -22,18 +22,15 @@ export const LocationProvider = ({ children }) => {
             setLoading(false);
           },
           (error) => {
-            console.log('Location error', error);
             setLocation(DEFAULT_LOCATION);
             setLoading(false);
           }
         );
       } else {
-        console.log('Geolocation is not available');
         setLocation(DEFAULT_LOCATION);
         setLoading(false);
       }
     };
-
     getLocation();
   }, []);
 

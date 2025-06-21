@@ -23,6 +23,6 @@ exports.sentEmail = async (to, subject, text) => {
         const info = await transporter.sendMail(mailOptions);
         return info;
     } catch (error) {
-        throw new Error(`Error sending email: ${error.message}`);
+        throw new Error(`Възникна грешки при изпращане на имейл.`);
     }
 };

@@ -4,7 +4,7 @@ const URL = 'http://localhost:5000/user';
 
 export const register = async (email, password, confirmPassword) => {
     if (password !== confirmPassword) {
-        throw Error('Passwords do not match!');
+        throw Error('Грешка при регистриране: Паролите не съвпадат.');
     }
 
     try {
@@ -60,6 +60,6 @@ export const updateUserInfo = async (userId, token, updatedData) => {
         });
         return response.data;
     } catch (error) {
-        throw error.response?.data?.msg;
+        throw error.response.data.msg;
     }
 };
