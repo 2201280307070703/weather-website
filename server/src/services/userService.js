@@ -92,6 +92,8 @@ exports.getUsersWithEnabledRecommendations = async () => {
 
 exports.getUserInfo = async (userId) => {
     try {
+        console.log(userId);
+        
         const user = await User.findById(userId);
         return user;
     }
@@ -101,14 +103,6 @@ exports.getUserInfo = async (userId) => {
 };
 
 exports.updateUserInfo = async (userId, updatedData) => {
-    if (updatedData.recommendationsEnabled && !updatedData.city.trim()) {
-        throw new Error('За да получите предложения за уикенда, моля изберете град.');
-    }
-
-    if (updatedData.alertsEnabled && (!updatedData.city.trim() || !updatedData.maxTemp && !updatedData.minTemp)) {
-        throw new Error('За да получите предупреждения при критични температури, моля изберете град, минимална и максимална температура.');
-    }
-
     try {
         const user = await User.findById(userId);
 

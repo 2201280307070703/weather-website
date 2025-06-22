@@ -38,12 +38,12 @@ export default function UserInfo() {
         setMessage(null);
         setLoading(true);
 
-        if (userInfo.recommendationsEnabled && !userInfo.city.trim()) {
+        if (userInfo.recommendationsEnabled && !userInfo.city) {
             setMessage('❌ Моля въведете за кой град искате да получавате предложения за забавления през уикендите.');
             return setLoading(false);
         }
 
-        if (userInfo.alertsEnabled && (!userInfo.city.trim() || !userInfo.minTemp || !userInfo.maxTemp)) {
+        if (userInfo.alertsEnabled && (!userInfo.city || !userInfo.minTemp || !userInfo.maxTemp)) {
             setMessage('❌ Моля въведете за кой град искате да получавате нотификации и в какъв температурен диапазон.');
             return setLoading(false);
         }

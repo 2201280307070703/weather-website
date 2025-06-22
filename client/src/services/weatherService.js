@@ -130,8 +130,6 @@ export const getRecommendationsDependingOnWeather = async (lat, lon) => {
                 lon: lon
             }
         });
-        console.log(response.data);
-
         return response.data;
     }
     catch (error) {

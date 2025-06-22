@@ -2,7 +2,11 @@ const router = require('express').Router();
 const weatherService = require('../services/weatherService');
 
 router.get('/today', async (req, res) => {
-    const {lat, lon } = req.query;
+    const { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
 
     try {
         const response = await weatherService.getWeatherByCoords(lat, lon, 1);
@@ -19,15 +23,19 @@ router.get('/today', async (req, res) => {
             'chanceOfSnow': response.forecast.forecastday[0].day.daily_will_it_snow,
         };
 
-        res.send(result);
+        res.json(result);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 router.get('/current-weather-state', async (req, res) => {
     const { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
 
     try {
         const response = await weatherService.getWeatherCurrentState(lat, lon);
@@ -35,16 +43,20 @@ router.get('/current-weather-state', async (req, res) => {
         res.json(response);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 router.get('/hourly', async (req, res) => {
     const { lat, lon } = req.query;
 
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
+
     try {
         const response = await weatherService.getWeatherByCoords(lat, lon);
-        
+
         const now = new Date();
         now.setMinutes(0, 0, 0);
 
@@ -64,14 +76,19 @@ router.get('/hourly', async (req, res) => {
             });
 
         res.json(result);
+        
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 
 router.get('/threeDays', async (req, res) => {
     const { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
 
     try {
         const response = await weatherService.getWeatherByCoords(lat, lon, 3);
@@ -92,12 +109,16 @@ router.get('/threeDays', async (req, res) => {
         res.json(result);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 router.get('/astro', async (req, res) => {
     const { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
 
     try {
         const response = await weatherService.getWeatherByCoords(lat, lon);
@@ -107,24 +128,28 @@ router.get('/astro', async (req, res) => {
         res.json(result);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 router.get('/mainInfo', async (req, res) => {
     const { lat, lon, city } = req.query;
 
+    if (!((lat && lon) || city)) {
+        return res.status(400).json({ msg: 'Липсват координати или град.' });
+    }
+
     try {
         let response;
 
-        if(lat, lon){
+        if (lat, lon) {
             response = await weatherService.getWeatherByCoords(lat, lon);
         }
-        
-        if(city){
+
+        if (city) {
             response = await weatherService.getWeatherByCity(city);
         }
-        
+
         const result = {
             'city': response.location.name,
             'state': response.current.condition.text,
@@ -139,13 +164,17 @@ router.get('/mainInfo', async (req, res) => {
         res.json(result);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 
 router.get('/weatherStats', async (req, res) => {
     const { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
 
     try {
         const response = await weatherService.getWeatherByCoords(lat, lon);
@@ -160,12 +189,16 @@ router.get('/weatherStats', async (req, res) => {
         res.json(result);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 
 router.get('/recommendations', async (req, res) => {
     const { lat, lon } = req.query;
+
+    if (!lat || !lon) {
+        return res.status(400).json({ msg: 'Липсват координати.' });
+    }
 
     try {
         const response = await weatherService.getWeatherByCoords(lat, lon);
@@ -287,7 +320,7 @@ router.get('/recommendations', async (req, res) => {
         res.json(result);
 
     } catch (error) {
-        res.status(400).json({ msg: error.message });
+        res.status(500).json({ msg: error.message });
     }
 });
 

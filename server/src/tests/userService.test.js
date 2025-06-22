@@ -40,7 +40,7 @@ describe('register', () => {
 
         await expect(userService.register('existing@example.com', 'pass', true, 'city', 5, 20))
             .rejects
-            .toThrow('Register error: User with this email already exist!');
+            .toThrow('Грешка при регистриране: Вече има съществуващ акаунт с този имейл.');
     });
 
     it('should throw error if User.findOne fails', async () => {
@@ -48,7 +48,7 @@ describe('register', () => {
 
         await expect(userService.register('email@example.com', 'pass', true, 'city', 5, 20))
             .rejects
-            .toThrow('Register error: DB failure');
+            .toThrow('Грешка при регистриране: DB failure');
     });
 });
 
@@ -87,7 +87,7 @@ describe('login', () => {
     it('should throw error if user is not found', async () => {
         User.findOne.mockResolvedValue(null);
 
-        await expect(userService.login(mockEmail, 'password123')).rejects.toThrow('Login error: Invalid credentials!');
+        await expect(userService.login(mockEmail, 'password123')).rejects.toThrow('Грешка при влизане: Невалиден имейл или парола.');
     });
 
     it('should throw error if password is incorrect', async () => {
@@ -99,13 +99,13 @@ describe('login', () => {
 
         User.findOne.mockResolvedValue(mockUser);
 
-        await expect(userService.login(mockEmail, 'wrongpass')).rejects.toThrow('Login error: Invalid credentials!');
+        await expect(userService.login(mockEmail, 'wrongpass')).rejects.toThrow('Грешка при влизане: Невалиден имейл или парола.');
     });
 
     it('should throw error if unexpected error occurs', async () => {
         User.findOne.mockRejectedValue(new Error('Database down'));
 
-        await expect(userService.login(mockEmail, 'any')).rejects.toThrow('Login error: Database down');
+        await expect(userService.login(mockEmail, 'any')).rejects.toThrow('Грешка при влизане: Database down');
     });
 });
 
@@ -138,7 +138,7 @@ describe('getUsersWithEnabledNotifications', () => {
         User.find.mockRejectedValue(new Error('DB error'));
 
         await expect(userService.getUsersWithEnabledNotifications()).rejects.toThrow(
-            'Error getting users with enabled notifications: DB error'
+            'DB error'
         );
     });
 });
@@ -170,7 +170,7 @@ describe('getUsersWithEnabledRecommendations', () => {
         User.find.mockRejectedValue(new Error('DB error'));
 
         await expect(userService.getUsersWithEnabledRecommendations()).rejects.toThrow(
-            'Error getting users with enabled recommendations: DB error'
+            'DB error'
         );
     });
 });
@@ -195,7 +195,7 @@ describe('getUserInfo', () => {
         User.findById.mockRejectedValue(new Error('DB error'));
 
         await expect(userService.getUserInfo()).rejects.toThrow(
-            'Error getting user by user id: DB error'
+            'DB error'
         );
     });
 });
@@ -252,14 +252,14 @@ describe('updateUserInfo', () => {
         User.findById.mockResolvedValue(null);
 
         await expect(userService.updateUserInfo('nonexistentId', {}))
-            .rejects.toThrow('This user does not exist!');
+            .rejects.toThrow('Грешка при редактиране на потребителските данни: Такъв потребител не съществува.');
     });
 
     it('should throw error if findById throws', async () => {
         User.findById.mockRejectedValue(new Error('DB failure'));
 
         await expect(userService.updateUserInfo('anyId', {}))
-            .rejects.toThrow("An error occurred when updating the user's data: DB failure");
+            .rejects.toThrow("Грешка при редактиране на потребителските данни: DB failure");
     });
 
     it('should throw error if save throws', async () => {
@@ -270,6 +270,6 @@ describe('updateUserInfo', () => {
         User.findById.mockResolvedValue(mockUser);
 
         await expect(userService.updateUserInfo('userId123', {}))
-            .rejects.toThrow("An error occurred when updating the user's data: Save failure");
+            .rejects.toThrow("Грешка при редактиране на потребителските данни: Save failure");
     });
 });
