@@ -28,7 +28,8 @@ export default function Login() {
         try {
             await loginSubmitHandler(formData)
         } catch(error) {
-            setError(error || 'Възникна грешка при влизане. Моля опитайте отново!');
+            console.log(error);
+            setError(error.message || 'Възникна грешка при влизане. Моля опитайте отново!');
         };
     };
 

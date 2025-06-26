@@ -92,8 +92,6 @@ exports.getUsersWithEnabledRecommendations = async () => {
 
 exports.getUserInfo = async (userId) => {
     try {
-        console.log(userId);
-        
         const user = await User.findById(userId);
         return user;
     }

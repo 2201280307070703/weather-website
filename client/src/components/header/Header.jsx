@@ -2,8 +2,8 @@ import { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LocationContext } from '../../contexts/locationContext';
 import AuthenticationContext from '../../contexts/authenticationContext';
-import Path from '../../paths';
 import * as weatherService from '../../services/weatherService';
+import Path from '../../paths';
 import './Header.css';
 
 export default function Header() {
@@ -16,7 +16,7 @@ export default function Header() {
       weatherService.getCurrentWeatherState(location.latitude, location.longitude)
         .then(setWeather)
         .catch((error) => {
-          console.log(`Header error: ${error}`);
+          console.log(`Header error: ${error.message}`);
         });
     }
   }, [loading, location.latitude, location.longitude]);

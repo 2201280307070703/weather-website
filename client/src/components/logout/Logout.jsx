@@ -13,7 +13,7 @@ export default function Logout() {
                 await logoutHandler();
             }
             catch (error) {
-                setError(error);
+                setError(error.message);
                 setInfoPopupVisibility(true);
             }
         };

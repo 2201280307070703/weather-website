@@ -3,6 +3,10 @@ import axios from 'axios';
 const URL = 'http://localhost:5000/weather';
 
 export const getCurrentWeatherState = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/current-weather-state`, {
             params: {
@@ -13,11 +17,15 @@ export const getCurrentWeatherState = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 };
 
 export const getTodaysWeatherInformation = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/today`, {
             params: {
@@ -28,11 +36,15 @@ export const getTodaysWeatherInformation = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }
 
 export const getWeatherHourly = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/hourly`, {
             params: {
@@ -43,12 +55,16 @@ export const getWeatherHourly = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 
 }
 
 export const getWeatherForThreeDays = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/threeDays`, {
             params: {
@@ -59,11 +75,15 @@ export const getWeatherForThreeDays = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }
 
 export const getAstroData = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/astro`, {
             params: {
@@ -74,11 +94,15 @@ export const getAstroData = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }
 
 export const getMainWeatherInfoByCoordinates = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/mainInfo`, {
             params: {
@@ -89,11 +113,15 @@ export const getMainWeatherInfoByCoordinates = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }
 
 export const getMainWeatherInfoByCity = async (city) => {
+    if (!city) {
+        throw new Error('Липсва град.');
+    }
+
     try {
         const response = await axios.get(`${URL}/mainInfo`, {
             params: {
@@ -103,11 +131,15 @@ export const getMainWeatherInfoByCity = async (city) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }
 
 export const getCurrentWeatherStatsByCoordinates = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/weatherStats`, {
             params: {
@@ -118,11 +150,15 @@ export const getCurrentWeatherStatsByCoordinates = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }
 
 export const getRecommendationsDependingOnWeather = async (lat, lon) => {
+    if (!lat || !lon) {
+        throw new Error('Липсват координати.');
+    }
+
     try {
         const response = await axios.get(`${URL}/recommendations`, {
             params: {
@@ -133,6 +169,6 @@ export const getRecommendationsDependingOnWeather = async (lat, lon) => {
         return response.data;
     }
     catch (error) {
-        throw error.response.data.msg;
+        throw new Error(error.response?.data?.msg || 'Възникна грешка при извличането на данните.');
     }
 }

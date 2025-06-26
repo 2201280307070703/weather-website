@@ -29,7 +29,7 @@ export default function Register() {
             await registerSubmitHandeler(formData);
         }
         catch (error) {
-            setError(error.message ? error.message : error);
+            setError(error.message || 'Възникна грешка при регистрация. Моля опитайте отново!');
         }
     };
 
